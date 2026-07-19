@@ -26,12 +26,24 @@ Every card art-directs the words too. A risograph zine and a blueprint infra too
 
 Each card specifies references, feel, type (with a free Google Fonts fallback), color, layout grammar, motion, a signature move, an imagery treatment, and a voice.
 
+## Copy protections
+
+Generic marketing-speak is the copy equivalent of the purple gradient. The skill guards against it two ways: guidance in `references/copy.md` (the tell list, per-surface fixes for headlines/CTAs/empty states/errors, and same-message-in-six-voices examples), and a runnable linter that scans product copy for AI tells:
+
+```sh
+bin/check-copy.sh src/ app/ content/
+```
+
+HARD hits (supercharge, seamlessly, "the future of", em dashes, and the rest) exit 1 so it can gate a commit or run in CI. SOFT hits (leverage, robust, moreover) warn. Point it at product copy, not the guide itself, which lists every banned phrase as an example. The em-dash ban is Rob's hard rule; drop `—` from the script's HARD list if your team allows them.
+
 ## Files
 
 ```
 SKILL.md              the workflow: roll → commit → load type/imagery/voice → ban-list → spec → build → verify
 references/deck.md     the 16 directions, fully specified
 references/assets.md   loading fonts so they don't degrade; placeholder images (keyless + Unsplash key); treatment recipes
+references/copy.md     anti-AI copy protections: the tell list, per-surface fixes, same-message-different-voice
+bin/check-copy.sh     a linter that flags AI copy tells (hype, em dashes) with file:line; HARD hits exit 1
 examples/             two pages built by running the skill (see below)
 ```
 
@@ -39,8 +51,8 @@ examples/             two pages built by running the skill (see below)
 
 Built by actually running the skill, not hand-picked:
 
-- **`examples/gauge-blueprint.html`** — a fit-selected SLO-monitoring SaaS landing in `technical-blueprint`. Dimension lines annotate the UI as a spec sheet.
-- **`examples/marl-risograph.html`** — a random seed (roll landed on `risograph-print`) applied to an indie fashion label. Overprinted spot inks, paper grain, duotone-treated placeholder photos. Proof the deck holds up even on an "off" pick.
+- **`examples/gauge-blueprint.html`**, a fit-selected SLO-monitoring SaaS landing in `technical-blueprint`. Dimension lines annotate the UI as a spec sheet.
+- **`examples/marl-risograph.html`**, a random seed (roll landed on `risograph-print`) applied to an indie fashion label. Overprinted spot inks, paper grain, duotone-treated placeholder photos. Proof the deck holds up even on an "off" pick.
 
 Open either file in a browser. `marl-risograph.html` loads placeholder photos from an external host, so it needs a network connection.
 
