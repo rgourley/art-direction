@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MARL / studio — AW26</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3EFE0; --ink:#1B1A17; --pink:#FF48B0; --blue:#0A6CD6;
+    --serif:'DM Serif Display', Georgia, 'Times New Roman', serif;
+    --sans:'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:17px; line-height:1.45;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  /* riso paper grain — feTurbulence, multiply over everything */
+  body::after{
+    content:""; position:fixed; inset:0; z-index:9999; pointer-events:none;
+    mix-blend-mode:multiply; opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    animation:grain 1.2s steps(2) infinite;
+  }
+  @keyframes grain{0%{transform:translate(0,0)}50%{transform:translate(-4px,3px)}100%{transform:translate(3px,-2px)}}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 40px}
+  .label{font-family:var(--sans); font-weight:600; font-size:12px; letter-spacing:.16em; text-transform:uppercase}
+
+  /* nav */
+  header{border-bottom:2px solid var(--ink)}
+  .bar{display:flex; align-items:center; justify-content:space-between; height:70px}
+  .logo{font-family:var(--serif); font-size:24px; letter-spacing:.01em}
+  .logo b{color:var(--pink); font-weight:400}
+  nav a{color:var(--ink); text-decoration:none; font-weight:500; font-size:12px;
+    letter-spacing:.12em; text-transform:uppercase; margin-left:26px}
+  nav a:hover{color:var(--pink)}
+  nav a.cart{color:var(--blue)}
+
+  /* hero */
+  .hero{padding:56px 0 30px; display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:end}
+  .eyebrow{color:var(--blue); margin-bottom:18px}
+  /* overprint headline — the signature move */
+  .over{position:relative; font-family:var(--serif); font-size:92px; line-height:.92; letter-spacing:-.01em; margin:0}
+  .over span{display:block}
+  .over .base{color:var(--ink)}
+  .over .p,.over .b{position:absolute; inset:0; mix-blend-mode:multiply}
+  .over .p{color:var(--pink); transform:translate(-4px,3px)}
+  .over .b{color:var(--blue); transform:translate(4px,-2px)}
+  .over em{font-style:italic}
+  .sell{max-width:40ch; margin:26px 0 26px; font-size:18px}
+  .drop-cta{display:inline-flex; align-items:center; gap:14px}
+  .pill{font-family:var(--sans); font-weight:600; font-size:13px; letter-spacing:.1em; text-transform:uppercase;
+    background:var(--ink); color:var(--paper); padding:13px 22px; text-decoration:none; border:0}
+  .pill:hover{background:var(--pink); color:var(--ink)}
+  .stamp{font-family:var(--sans); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--blue)}
+
+  /* riso plate (duotone halftone "photograph") */
+  .plate{position:relative; aspect-ratio:3/4; border:1.5px solid var(--ink)}
+  .plate::before{ /* misregistered offset frame */
+    content:""; position:absolute; inset:0; border:1.5px solid var(--pink);
+    transform:translate(6px,6px); mix-blend-mode:multiply; z-index:-1;
+  }
+  .plate .field{position:absolute; inset:0; overflow:hidden; background:var(--paper)}
+  /* riso duotone from a real photo: grayscale base, blue→shadows, pink→highlights */
+  .plate .field img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    filter:grayscale(1) contrast(1.1) brightness(1.02)}
+  .plate .lo{position:absolute; inset:0; background:var(--blue); mix-blend-mode:lighten}
+  .plate .hi{position:absolute; inset:0; background:var(--pink); mix-blend-mode:darken; opacity:.92}
+  .plate .halftone{position:absolute; inset:0; mix-blend-mode:screen; opacity:.28;
+    background-image:radial-gradient(var(--paper) 30%, transparent 32%);
+    background-size:7px 7px;}
+  .plate .no{position:absolute; left:16px; top:12px; font-family:var(--serif); font-size:62px; color:var(--paper); mix-blend-mode:screen}
+  .plate .cap{position:absolute; left:0; right:0; bottom:0; background:var(--paper); border-top:1.5px solid var(--ink);
+    padding:10px 14px; display:flex; justify-content:space-between; align-items:baseline}
+  .plate .cap .n{font-family:var(--serif); font-size:19px}
+  .plate .cap .pr{font-family:var(--sans); font-weight:600; font-size:13px; letter-spacing:.06em}
+
+  /* lookbook */
+  .look{padding:64px 0 40px; border-top:2px solid var(--ink)}
+  .look .head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:34px}
+  .look h2{font-family:var(--serif); font-size:34px; margin:0}
+  .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:26px}
+  .grid .plate{transition:transform .12s steps(2)}
+  .grid .plate:hover{transform:translate(-2px,-3px)}
+
+  /* editorial band */
+  .band{margin:20px 0; padding:70px 0; border-top:2px solid var(--ink); border-bottom:2px solid var(--ink); position:relative}
+  .band .q{font-family:var(--serif); font-size:40px; line-height:1.12; max-width:24ch}
+  .band .q em{color:var(--pink); font-style:italic}
+  .band .by{margin-top:26px; color:var(--blue); max-width:52ch}
+
+  /* newsletter / footer */
+  .foot{padding:56px 0 70px; display:grid; grid-template-columns:1.2fr .8fr; gap:48px}
+  .foot h3{font-family:var(--serif); font-size:28px; margin:0 0 18px}
+  .subrow{display:flex; border:1.5px solid var(--ink); max-width:420px}
+  .subrow input{flex:1; border:0; background:transparent; padding:14px 16px; font-family:var(--sans); font-size:15px; color:var(--ink)}
+  .subrow input::placeholder{color:#8a857a}
+  .subrow button{border:0; border-left:1.5px solid var(--ink); background:var(--pink); color:var(--ink);
+    font-family:var(--sans); font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:12px; padding:0 20px; cursor:pointer}
+  .cols{display:flex; gap:56px; font-size:14px}
+  .cols b{font-family:var(--sans); display:block; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); margin-bottom:12px}
+  .cols a{display:block; color:var(--ink); text-decoration:none; margin:6px 0}
+  .cols a:hover{color:var(--pink)}
+  .colophon{border-top:1.5px solid var(--ink); padding:22px 0; text-align:center;
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink)}
+  .colophon b{color:var(--pink); font-weight:600}
+
+  @media (max-width:920px){
+    .hero{grid-template-columns:1fr; gap:34px} .over{font-size:60px}
+    .grid{grid-template-columns:repeat(2,1fr)} .foot{grid-template-columns:1fr}
+    .wrap{padding:0 24px} .band .q{font-size:30px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <div class="logo">MARL<b>/</b>studio</div>
+    <nav>
+      <a href="#">Shop</a><a href="#">Lookbook</a><a href="#">Journal</a><a href="#">About</a>
+      <a class="cart" href="#">Cart (0)</a>
+    </nav>
+  </div>
+</header>
+
+<section class="wrap hero">
+  <div>
+    <div class="eyebrow label">Autumn / Winter 2026 — Edition of 300</div>
+    <h1 class="over">
+      <span class="base"><span>Worn in,</span><span><em>not</em> worn out.</span></span>
+      <span class="p" aria-hidden="true"><span>Worn in,</span><span><em>not</em> worn out.</span></span>
+      <span class="b" aria-hidden="true"><span>Worn in,</span><span><em>not</em> worn out.</span></span>
+    </h1>
+    <p class="sell">Small-batch garments, cut from deadstock wool and organic marl. Every piece screen-numbered by hand. When the 300 are gone, they're gone.</p>
+    <div class="drop-cta">
+      <a class="pill" href="#">Shop the drop</a>
+      <span class="stamp">◷ 41 pieces remaining</span>
+    </div>
+  </div>
+
+  <div class="plate" aria-label="Look 01">
+    <div class="field">
+      <img data-placeholder src="https://loremflickr.com/600/800/wool,coat?lock=11" alt="The Marl Overcoat">
+      <span class="lo"></span><span class="hi"></span><span class="halftone"></span>
+    </div>
+    <span class="no">01</span>
+    <div class="cap"><span class="n">The Marl Overcoat</span><span class="pr">£340</span></div>
+  </div>
+</section>
+
+<section class="wrap look">
+  <div class="head">
+    <h2>The Lookbook</h2>
+    <span class="label" style="color:var(--blue)">08 pieces · shot on 35mm</span>
+  </div>
+  <div class="grid">
+    <div class="plate"><div class="field"><img data-placeholder src="https://loremflickr.com/600/800/parka,jacket?lock=22" alt="Deadstock Parka"><span class="lo"></span><span class="hi"></span><span class="halftone"></span></div><span class="no">02</span><div class="cap"><span class="n">Deadstock Parka</span><span class="pr">£280</span></div></div>
+    <div class="plate"><div class="field"><img data-placeholder src="https://loremflickr.com/600/800/trousers,fashion?lock=33" alt="Field Trouser"><span class="lo"></span><span class="hi"></span><span class="halftone"></span></div><span class="no">03</span><div class="cap"><span class="n">Field Trouser</span><span class="pr">£150</span></div></div>
+    <div class="plate"><div class="field"><img data-placeholder src="https://loremflickr.com/600/800/knitwear,sweater?lock=44" alt="Ribbed Knit"><span class="lo"></span><span class="hi"></span><span class="halftone"></span></div><span class="no">04</span><div class="cap"><span class="n">Ribbed Knit</span><span class="pr">£120</span></div></div>
+    <div class="plate"><div class="field"><img data-placeholder src="https://loremflickr.com/600/800/cap,hat?lock=55" alt="Selvedge Cap"><span class="lo"></span><span class="hi"></span><span class="halftone"></span></div><span class="no">05</span><div class="cap"><span class="n">Selvedge Cap</span><span class="pr">£45</span></div></div>
+  </div>
+</section>
+
+<section class="wrap band">
+  <p class="q">We print the tags on the same <em>Risograph</em> we print the lookbook. Ink smudges. Registration slips. We keep it.</p>
+  <p class="by">Nothing here is mass-produced, so nothing here pretends to be. The misprint is the proof a person made it — MARL studio, printed &amp; sewn in Margate.</p>
+</section>
+
+<section class="wrap foot">
+  <div>
+    <h3>Join the list. Skip the queue.</h3>
+    <p style="max-width:44ch; margin:0 0 22px">Subscribers get first access to the next edition 24 hours before it goes public. No spam, one email per drop.</p>
+    <form class="subrow" onsubmit="return false">
+      <input type="email" placeholder="you@studio.address" aria-label="Email">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+  <div class="cols">
+    <div><b>Shop</b><a href="#">New in</a><a href="#">Outerwear</a><a href="#">Knitwear</a><a href="#">Archive</a></div>
+    <div><b>Studio</b><a href="#">About</a><a href="#">Stockists</a><a href="#">Returns</a><a href="#">Contact</a></div>
+  </div>
+</section>
+
+<div class="colophon">Edition of 300 · Printed on a Risograph MZ790 · <b>Sold out means sold out</b> · © MARL studio 2026</div>
+</body>
+</html>
