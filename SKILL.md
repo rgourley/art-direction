@@ -149,6 +149,7 @@ Three silent paths back to the mean, all closed here. See `references/assets.md`
 
 - **Typeface:** actually load the card's named face (Google Fonts / `next/font` / Fontshare / self-host). A face that falls back to system/Inter = drifted to default. Verify with `document.fonts.check("16px '<Face>'")`. On a CSP host (Artifacts), embed as data-URI or use the card's `free:` fallback deliberately.
 - **Imagery:** if the card is photo/illustration-led (gallery, editorial, earthy, maximalist, fashion-riso), fill it. Use placeholders (keyless by default, or Unsplash with a key) **run through the card's imagery treatment**, never raw stock. On a CSP host, use inline SVG / CSS treatments, not external URLs. Mark placeholders `data-placeholder`; never ship them.
+- **Illustration you cannot hand-craft in SVG (hard rule):** if the card calls for real illustration craft — botanical-plate, art-nouveau, ukiyo-e-woodblock, manga-anime, or any card at hero scale needing a realistic animal / human figure / ornamental drawing — **do not draw it in inline SVG**. Hand-drawn organic SVG produces childish geometric-cartoon shapes that betray the card louder than an empty block would. Take an escape path (see `references/assets.md` §3): fetch a public-domain illustration from Wikimedia / BHL / Rawpixel and treat it, use a treated photograph, reframe as type-as-specimen, or fit-override with a stated reason. SVG is for composing flat shapes (geometric, cut-paper, pixel, typographic ornament), not for drawing craft.
 - **Voice:** write the copy in the card's **voice** (deck.md). The words are art direction too, a risograph zine and a blueprint infra tool must not share a tone. Headlines, CTAs, empty states, error messages, and captions all inherit the voice. Obey the copy ban-list (below). For any long-form prose, also apply the `writing-natural` skill.
 
 ## Step 5: The ban-list (hard)
@@ -228,6 +229,7 @@ Fifth rule, everywhere: **voice sample lives in the hero copy**, not saved for e
 - [ ] **Hero discipline** (see Step 7): signature move lives IN the hero and is load-bearing; base card's craft language visible without zooming; motion matches the card's spec; treated media in the hero if the card is photo/illustration-led; voice sample in the hero copy, not saved for body.
 - [ ] Copy is in the card's **voice** and clears `bin/check-copy.sh` (zero HARD hits: no hype phrases, no em dashes), tone matching the pixels.
 - [ ] Photo/illustration-led card: imagery is filled and ran through the card's treatment (no raw stock, no empty blocks).
+- [ ] **No hand-drawn complex organic illustration in inline SVG.** For cards needing real illustration craft (botanical, art-nouveau, ukiyo-e, manga, realistic figures/animals), an escape path was used: PD illustration, treated photograph, type-as-specimen, or documented fit-override (see `references/assets.md` §3).
 - [ ] Placeholders are keyless, marked `data-placeholder`, and nothing ships pointing at a placeholder host.
 - [ ] Fewer than three ban-list tells in the final output (ideally zero).
 - [ ] Scale contrast is visible (headline vs body is dramatic, not uniform).

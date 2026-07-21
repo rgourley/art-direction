@@ -98,7 +98,49 @@ When the user supplies an **`UNSPLASH_ACCESS_KEY`**, prefer this: curated, high-
 
 ---
 
-## 3. Treatment recipes: make a placeholder read on-aesthetic
+## 3. When the card needs real illustration (don't hand-draw it in SVG)
+
+**The rule:** if the card's imagery calls for craft only a real illustrator produces — botanical/natural-history plates, human figures, ornamental art-nouveau curves, ukiyo-e woodblock line, Mucha-style figures, Haeckel-style biological detail, Merian-style plants-and-insects, realistic animals — **do not hand-craft it in inline SVG**. Hand-drawn organic SVG produces childish, geometric-cartoon shapes that violate the card's aesthetic more loudly than an empty block would. It is the illustration equivalent of Inter-by-accident.
+
+Split cleanly:
+
+**SVG can execute (compose flat shapes):**
+- Geometric primitives at any scale: bauhaus-constructivist, art-deco, memphis-postmodern, sci-fi-hud panels, comic-pop ben-day dot fields, vaporwave grids
+- Simple 3–5-shape cut-paper illustration (mid-century-modernist, when the shapes really are simple)
+- Pixel-perfect sprite art (pixel-8bit)
+- Typographic ornament, borders, rules, dimension lines (technical-blueprint, editorial-magazine, broadsheet-newspaper, swiss-international)
+- ASCII / box-drawing (terminal-mono)
+- Icons and tiny functional glyphs (utilitarian-dense, humanist-warm)
+- Riso "overprint" via offset colored duplicate shapes (risograph accent effect)
+
+**SVG cannot execute (needs real illustration craft):**
+- botanical-plate: Haeckel / Merian / Audubon / Redouté plates. Fine ink hatching, realistic anatomy.
+- art-nouveau: Mucha figures, Klimt gilt patterning, flowing floral tendrils.
+- ukiyo-e-woodblock: Hokusai / Hiroshige waves, figures, ink outlines with woodblock character.
+- manga-anime: Otomo-style figures, dramatic ink work.
+- editorial-magazine, gallery-monochrome, earthy-naturalist, maximalist-expressive at *hero* scale — these want real treated photography.
+- Realistic animals, insects, human figures, hands, faces — in any card.
+
+### Escape paths (pick one)
+
+1. **Fetch a real public-domain illustration** and treat it with the card's palette. All these are safe (creators died 100+ years ago):
+   - **Wikimedia Commons**, search: `Haeckel Kunstformen`, `Merian Metamorphosis`, `Audubon Birds of America`, `Redouté Les Roses`, `Hokusai`, `Hiroshige`, `Mucha`, `Klimt`. Use the largest available resolution, download to `assets/`, treat with CSS filters.
+   - **Biodiversity Heritage Library** (biodiversitylibrary.org) — deep archive of PD natural-history illustration, all reusable.
+   - **Rawpixel PD Collection** (rawpixel.com/public-domain) — curated, cleaned, high-res.
+   - **NYPL Digital Collections** and **Smithsonian Open Access** — vast PD catalogs.
+   - Attribution isn't legally required for PD, but a small "after Haeckel, 1904" line in the colophon is honest and on-tone for botanical/editorial cards.
+
+2. **Use a real treated photograph** via the placeholder tiers above (Unsplash / LoremFlickr), then run it through the card's treatment (§4 below). This is the answer for photo-led cards (editorial, gallery, earthy, maximalist).
+
+3. **Reframe: type-as-specimen.** If the card is botanical/editorial and no illustration is at hand, make **typography the specimen** — an oversized letter or word set in the card's face, with tiny leader-line annotations labeling its parts (ascender, terminal, ligature). This is a real tradition (Bodoni, Emigre, Adobe type specimens) and reads as botanical-plate-adjacent without needing organic drawing.
+
+4. **Fit-override to an SVG-executable card.** If the roll landed on `botanical-plate`, `art-nouveau`, `ukiyo-e-woodblock`, or `manga-anime` and you have no illustration and no time to source one, override with an explicit reason ("no illustration available for this project, overriding to swiss-international / bauhaus-constructivist / mid-century-modernist"). Note the override — don't reroll silently.
+
+**The tell to catch yourself before shipping:** if the drawing you just made in SVG looks like a diagram of what a real illustration should be, it is one. Stop, use an escape path.
+
+---
+
+## 4. Treatment recipes: make a placeholder read on-aesthetic
 
 Apply the card's treatment so even stock reads as designed.
 
@@ -147,10 +189,11 @@ Mask the photo into a shape (`clip-path` circle/blob) on a flat color block; thi
 
 ---
 
-## 4. Checklist for this file's concerns
+## 5. Checklist for this file's concerns
 - [ ] The card's named face is actually loaded (`document.fonts.check` returns true), not silently system/Inter.
 - [ ] Photo/illustration-led card: imagery is present, not empty blocks.
-- [ ] Every placeholder ran through the card's treatment (§3), no raw stock.
+- [ ] For cards that need real illustration craft (botanical-plate, art-nouveau, ukiyo-e, manga, editorial photo hero, etc.), took an escape path — real PD illustration, treated photograph, type-as-specimen, or documented fit-override. **Did not hand-draw complex organic illustration in SVG.**
+- [ ] Every placeholder ran through the card's treatment (§4), no raw stock.
 - [ ] Placeholders are keyless (LoremFlickr/Picsum), marked `data-placeholder`, and not `source.unsplash.com`.
-- [ ] Target is an Artifact/CSP host → images are inline/CSS, not external URLs.
+- [ ] Target is an Artifact/CSP host → images are inline/CSS (for the escape paths that support it) or the PD illustration is embedded as a data-URI, not an external URL.
 - [ ] Nothing ships to production pointing at a placeholder host.
