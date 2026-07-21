@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marker API · Reference — deconstructed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Anton&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F4EEDF;
+  --ink: #16130E;
+  --ink-2: #201C15;
+  --cream: #EDE4D0;
+  --cream-dim: rgba(237, 228, 208, 0.72);
+  --cream-fade: rgba(237, 228, 208, 0.4);
+  --acid: #C7FF37;
+  --magenta: #FF3B8F;
+  --hair: rgba(237, 228, 208, 0.15);
+  --memphis-teal: #12E4C4;
+  --memphis-hot: #FF7A45;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Halftone paper grain */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  opacity: 0.25;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9  0 0 0 0 0.86  0 0 0 0 0.7  0 0 0 0.15 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+a { color: inherit; }
+h1, h2, .display { text-wrap: balance; }
+p, .lede { text-wrap: pretty; }
+
+/* --------------------------------- LAYOUT ---------------------------------- */
+.wrap { max-width: 1440px; margin: 0 auto; padding: 24px 40px 80px; }
+
+/* Top nav — collision: bodoni wordmark colliding with mono meta */
+.topnav {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  padding: 12px 0 22px;
+  border-bottom: 1px solid var(--hair);
+  position: relative;
+}
+.wordmark {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 800;
+  font-size: 42px;
+  letter-spacing: -0.03em;
+  color: var(--cream);
+  line-height: 1;
+  position: relative;
+}
+.wordmark::after {
+  content: 'v.2.3';
+  position: absolute;
+  top: -6px; left: 100%;
+  margin-left: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--magenta);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transform: rotate(-4deg);
+}
+.wordmark em {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 26px;
+  color: var(--acid);
+  vertical-align: 6px;
+  margin-left: 8px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.nav-items {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  display: flex;
+  gap: 26px;
+  color: var(--cream-dim);
+}
+.nav-items a { text-decoration: none; }
+.nav-items a.on { color: var(--acid); border-bottom: 2px solid var(--acid); padding-bottom: 4px; }
+
+/* -- HERO / TITLE SLAB (collision layout) -- */
+.hero {
+  padding: 46px 0 38px;
+  position: relative;
+  border-bottom: 1px solid var(--hair);
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--magenta);
+  margin-bottom: 14px;
+}
+.hero-eyebrow::before { content: '§ 4.1 · '; color: var(--cream-fade); }
+
+.hero-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(56px, 10vw, 128px);
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  font-weight: 400;
+  color: var(--cream);
+  position: relative;
+  z-index: 2;
+}
+.hero-title .italic {
+  font-style: italic;
+  color: var(--acid);
+}
+/* Overlap: anton chunk on top of bodoni */
+.hero-title .stamp {
+  display: inline-block;
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: clamp(42px, 6vw, 76px);
+  color: var(--magenta);
+  transform: translate(-16px, -14px) rotate(-3deg);
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 2px 12px;
+  background: var(--ink-2);
+  border: 2px solid var(--magenta);
+}
+.hero-lede {
+  margin-top: 26px;
+  max-width: 720px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--cream-dim);
+  font-weight: 400;
+}
+.hero-lede em {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  color: var(--cream);
+}
+
+/* -- MAIN GRID (broken columns) -- */
+.main {
+  display: grid;
+  grid-template-columns: 220px 1fr 260px;
+  gap: 40px;
+  padding-top: 40px;
+}
+
+/* SIDEBAR (with memphis accent) */
+.side {
+  position: relative;
+  padding-right: 4px;
+}
+.side-heading {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--acid);
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.side ul { list-style: none; border-top: 1px solid var(--hair); }
+.side li a {
+  display: block;
+  padding: 8px 0 8px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--cream-dim);
+  border-bottom: 1px solid var(--hair);
+  text-decoration: none;
+  position: relative;
+  transition: color 140ms ease, padding-left 140ms ease;
+}
+.side li a:hover { color: var(--acid); padding-left: 20px; }
+.side li a.on { color: var(--acid); font-weight: 500; border-left: 2px solid var(--acid); padding-left: 14px; }
+.side li a.on::after {
+  content: '←';
+  position: absolute; right: 6px; top: 8px;
+  color: var(--magenta);
+  transform: rotate(-4deg);
+}
+
+/* Memphis accent (the ONE surface where accent lives) */
+.memphis-decor {
+  position: absolute;
+  top: 320px;
+  left: 30px;
+  width: 190px;
+  height: 190px;
+  z-index: 1;
+}
+
+/* MAIN COLUMN — the "essay" */
+.main-col {
+  border-left: 1px solid var(--hair);
+  padding-left: 32px;
+  position: relative;
+}
+
+.section-heading {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin-top: 8px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.section-heading::before {
+  content: '';
+  position: absolute;
+  left: -32px; top: 22px;
+  width: 20px; height: 1px;
+  background: var(--magenta);
+}
+.section-heading em {
+  font-style: italic;
+  color: var(--acid);
+}
+
+.prose { font-size: 17px; line-height: 1.65; color: var(--cream); }
+.prose p + p { margin-top: 1em; }
+.prose strong { color: var(--acid); font-weight: 600; }
+.prose em { font-family: 'Bodoni Moda', serif; font-style: italic; color: var(--cream); }
+.prose a { color: var(--magenta); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* Colliding pullquote (Cranbrook signature move) */
+.pull {
+  margin: 32px 0 32px -32px;
+  padding: 24px 24px 24px 32px;
+  border-left: 4px solid var(--magenta);
+  background: var(--ink-2);
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--cream);
+  position: relative;
+  z-index: 2;
+  transform: rotate(-0.3deg);
+}
+.pull cite {
+  display: block;
+  margin-top: 12px;
+  font-family: 'DM Mono', monospace;
+  font-style: normal;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--cream-fade);
+}
+
+/* CODE BLOCK — deliberately loud */
+.code-wrap {
+  margin: 28px 0;
+  position: relative;
+}
+.code-tag {
+  position: absolute;
+  top: -12px; left: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--acid);
+  background: var(--ink);
+  padding: 0 8px;
+}
+.code-tag .method { color: var(--magenta); }
+.code {
+  border: 1px solid var(--hair);
+  border-left: 3px solid var(--acid);
+  background: var(--ink-2);
+  padding: 22px 22px 22px 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--cream);
+  overflow-x: auto;
+}
+.code .kw { color: var(--magenta); }
+.code .str { color: var(--acid); }
+.code .prop { color: #8FC0E8; }
+.code .num { color: #FFB86C; }
+.code .cmt { color: var(--cream-fade); font-style: italic; }
+
+/* Params table */
+.params { margin: 32px 0; }
+.params-title {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: var(--acid);
+}
+.params table { width: 100%; border-collapse: collapse; }
+.params th {
+  text-align: left;
+  padding: 10px 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--cream-fade);
+  border-bottom: 1px solid var(--cream-dim);
+  font-weight: 500;
+}
+.params td {
+  padding: 12px;
+  border-bottom: 1px solid var(--hair);
+  font-size: 14px;
+  vertical-align: top;
+  color: var(--cream);
+}
+.params td.name {
+  font-family: 'DM Mono', monospace;
+  color: var(--magenta);
+  font-weight: 500;
+}
+.params td.type {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--acid);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.params td.required { color: var(--magenta); font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; }
+
+/* RIGHT COLUMN — TOC + trivia */
+.right {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--cream-dim);
+  position: relative;
+}
+.toc-heading {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--acid);
+  margin-bottom: 12px;
+  line-height: 1;
+}
+.toc ul { list-style: none; border-top: 1px dashed var(--hair); }
+.toc li a {
+  display: block;
+  padding: 6px 0;
+  color: var(--cream-dim);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--hair);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.toc li a:hover { color: var(--acid); }
+.toc li a .n { color: var(--magenta); margin-right: 8px; }
+
+/* Marginalia: rotated tape-block Bodoni italic — Cranbrook */
+.marginalia {
+  margin-top: 32px;
+  padding: 16px;
+  border: 1px solid var(--hair);
+  border-left: 3px solid var(--acid);
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--cream);
+  line-height: 1.4;
+  transform: rotate(0.6deg);
+}
+.marginalia .lbl {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-style: normal;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--magenta);
+  margin-bottom: 8px;
+}
+
+/* Footer colophon */
+.footer {
+  margin-top: 60px;
+  padding-top: 22px;
+  border-top: 1px solid var(--hair);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--cream-fade);
+  letter-spacing: 0.1em;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.footer em {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  color: var(--cream-dim);
+}
+
+@media (max-width: 1100px) {
+  .main { grid-template-columns: 1fr; }
+  .side, .right { border: none; padding: 0; }
+  .memphis-decor { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topnav">
+    <div class="wordmark">Marker <em>API</em></div>
+    <div class="nav-items">
+      <a href="#">Guides</a>
+      <a href="#" class="on">Reference</a>
+      <a href="#">Changelog</a>
+      <a href="#">Playground</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-eyebrow">annotations · highlights · targeted spans</div>
+    <h1 class="hero-title">
+      Reference for the
+      <span class="italic">Highlights</span>
+      <span class="stamp">endpoint</span>
+    </h1>
+    <p class="hero-lede">The endpoint that takes a range on a page you don't own and stores a durable pointer to it. What you were <em>looking for</em> when you tried &lt;mark&gt; and it disappeared on the next deploy.</p>
+  </header>
+
+  <div class="main">
+
+    <aside class="side">
+      <div class="side-heading">API v.2.3</div>
+      <ul>
+        <li><a href="#">Introduction</a></li>
+        <li><a href="#">Authentication</a></li>
+        <li><a href="#">Pages</a></li>
+        <li><a href="#" class="on">Highlights</a></li>
+        <li><a href="#">Comments</a></li>
+        <li><a href="#">Webhooks</a></li>
+        <li><a href="#">Rate limits</a></li>
+        <li><a href="#">Errors</a></li>
+      </ul>
+
+      <!-- MEMPHIS ACCENT: exactly one surface -->
+      <svg class="memphis-decor" viewBox="0 0 190 190" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="40" cy="42" r="16" fill="#12E4C4"/>
+        <path d="M 20 90 Q 45 60, 70 90 T 120 90 T 170 90" stroke="#FF7A45" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <polygon points="150,20 168,40 132,40" fill="#FF3B8F"/>
+        <g fill="#C7FF37">
+          <circle cx="20" cy="140" r="3"/><circle cx="34" cy="150" r="3"/><circle cx="48" cy="146" r="3"/><circle cx="62" cy="158" r="3"/>
+        </g>
+        <path d="M 100 140 L 140 140 L 120 175 Z" fill="none" stroke="#12E4C4" stroke-width="2.5"/>
+      </svg>
+    </aside>
+
+    <main class="main-col">
+
+      <h2 class="section-heading">Create a <em>Highlight</em></h2>
+
+      <div class="prose">
+        <p>A <strong>Highlight</strong> is a range on a document, plus everything you need to find it again after the document changes. The range is stored as a triple: (a) the exact substring you selected, (b) the DOM path to its ancestor, (c) enough surrounding context to reanchor when either shifts. Store all three, resolve in that order.</p>
+      </div>
+
+      <blockquote class="pull">
+        The version of your document that existed at highlight time is gone. The API's job is to find the closest equivalent range in the version that exists now.
+        <cite>Design memo, 2026-01</cite>
+      </blockquote>
+
+      <div class="code-wrap">
+        <div class="code-tag"><span class="method">POST</span> /v2/highlights</div>
+        <pre class="code"><span class="kw">curl</span> https://api.marker.dev/v2/highlights \
+  -H <span class="str">"Authorization: Bearer $MARKER_KEY"</span> \
+  -H <span class="str">"Content-Type: application/json"</span> \
+  -d <span class="str">'{
+    <span class="prop">"page_url"</span>: <span class="str">"https://marker.dev/blog/reanchoring"</span>,
+    <span class="prop">"exact"</span>: <span class="str">"the version of your document"</span>,
+    <span class="prop">"prefix"</span>: <span class="str">"That is,"</span>,
+    <span class="prop">"suffix"</span>: <span class="str">"that existed at highlight time"</span>,
+    <span class="prop">"container"</span>: <span class="str">"main > article > p:nth-of-type(3)"</span>,
+    <span class="prop">"color"</span>: <span class="str">"#C7FF37"</span>
+  }'</span>
+<span class="cmt"># → 201 Created, returns { id, resolved_range, confidence: 1.0 }</span></pre>
+      </div>
+
+      <div class="prose">
+        <p>The response includes a <em>confidence</em> score. A value of <strong>1.0</strong> means the exact string was found in the container element on the current version of the page. Anything less means the API used the prefix/suffix triple to reanchor to the nearest match. Store the score with the highlight; render UI treatment based on it (a subtle warning when confidence &lt; 0.85, a full "this may have moved" flag when &lt; 0.5).</p>
+      </div>
+
+      <div class="params">
+        <div class="params-title">Request parameters</div>
+        <table>
+          <thead>
+            <tr><th style="width: 22%">Name</th><th style="width: 14%">Type</th><th style="width: 12%">Required</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="name">page_url</td>
+              <td class="type">string</td>
+              <td class="required">yes</td>
+              <td>Absolute URL of the document being annotated. Fragment identifiers stripped before storage.</td>
+            </tr>
+            <tr>
+              <td class="name">exact</td>
+              <td class="type">string</td>
+              <td class="required">yes</td>
+              <td>The selected substring, verbatim. Whitespace preserved. Max 500 chars.</td>
+            </tr>
+            <tr>
+              <td class="name">prefix</td>
+              <td class="type">string</td>
+              <td>opt.</td>
+              <td>Up to 32 chars immediately preceding the selection. Improves reanchor accuracy when the container changes.</td>
+            </tr>
+            <tr>
+              <td class="name">suffix</td>
+              <td class="type">string</td>
+              <td>opt.</td>
+              <td>Up to 32 chars immediately following the selection. Together with prefix, forms the disambiguator.</td>
+            </tr>
+            <tr>
+              <td class="name">container</td>
+              <td class="type">selector</td>
+              <td>opt.</td>
+              <td>CSS selector for the closest identifiable ancestor. Used first when resolving; falls back to prefix/suffix on miss.</td>
+            </tr>
+            <tr>
+              <td class="name">color</td>
+              <td class="type">hex</td>
+              <td>opt.</td>
+              <td>Any 6-digit hex, alpha ignored. Defaults to the workspace's brand accent.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <p>Learn about resolution failures in <a href="#">§ 4.4 Reanchoring</a> and how the webhook fires when a highlight's confidence drops below your threshold in <a href="#">§ 6 Webhooks</a>. If you're building a reader that needs sub-100ms highlight loading, see the <a href="#">bulk fetch endpoint</a>.</p>
+      </div>
+
+    </main>
+
+    <aside class="right">
+      <div class="toc-heading">On this page</div>
+      <nav class="toc">
+        <ul>
+          <li><a href="#"><span class="n">4.1</span>Create</a></li>
+          <li><a href="#"><span class="n">4.2</span>List</a></li>
+          <li><a href="#"><span class="n">4.3</span>Retrieve</a></li>
+          <li><a href="#"><span class="n">4.4</span>Reanchor</a></li>
+          <li><a href="#"><span class="n">4.5</span>Delete</a></li>
+        </ul>
+      </nav>
+
+      <div class="marginalia">
+        <span class="lbl">Editor's note</span>
+        The Highlights endpoint replaces the /v1 /annotations shape. Same object, different name, one required field renamed. Migration in the <em>Changelog</em>.
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="footer">
+    <div>Marker API · <em>Reference</em> · Version 2.3 · Updated 2026-07-20</div>
+    <div>rolled 21.2.2.8 · cranbrook-deconstructed · dark · balanced · +memphis-postmodern</div>
+  </footer>
+</div>
+</body>
+</html>

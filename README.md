@@ -64,14 +64,36 @@ assets/promo.{html,png} the repo's own promo image, designed by the skill on its
 
 ## Examples
 
-Built by actually running the skill, not hand-picked:
+Built by actually running the skill, not hand-picked. Each is a full HTML page in `examples/` — click a thumbnail to open the source, or clone the repo and open the file in a browser to see it live.
+
+### Two identical products, opposite rolls
+
+| [![Frequency, editorial-magazine dark](assets/examples/frequency-editorial-dark.png)](examples/frequency-editorial-dark.html) | [![Frequency, mid-century + riso](assets/examples/frequency-midcentury-riso.png)](examples/frequency-midcentury-riso.html) |
+|:---:|:---:|
+| **Frequency** · brief `4.2.1.1` | **Frequency** · brief `20.1.3.12` |
+| `editorial-magazine` · dark · display-first · +swiss-international | `mid-century-modernist` · default · body-first · +risograph-print |
+| Drop-cap serif hero, dark ink surface, strict Swiss-grid fit report card. | Cut-paper show avatars, warm cream surface, riso-treated fit report. |
+
+Same product (a podcaster→sponsor SaaS), opposite art direction. Both produced by rolling.
+
+### Four surface types, four random rolls
+
+| [![Marker docs, cranbrook-deconstructed](assets/examples/marker-docs-cranbrook.png)](examples/marker-docs-cranbrook.html) | [![Halberd dashboard, neo-brutalist](assets/examples/halberd-dashboard-brutalist.png)](examples/halberd-dashboard-brutalist.html) |
+|:---:|:---:|
+| **Marker · API docs** · brief `21.2.2.8` | **Halberd · Dashboard** · brief `2.2.1.12` |
+| `cranbrook-deconstructed` · dark · balanced · +memphis-postmodern | `neo-brutalist` · dark · display-first · +risograph-print |
+| Colliding Bodoni + Anton + mono, broken grid, acid-green accent. Memphis squiggle-and-shapes lives in the sidebar only. | Thick 3px borders, hard offset shadows, primary color fills. Riso-treated "sprint pulse" card is the one accent surface. |
+
+| [![Loomlist mobile, maximalist](assets/examples/loomlist-mobile-maximalist.png)](examples/loomlist-mobile-maximalist.html) | [![Nulldrop 500, manga-anime](assets/examples/nulldrop-error-manga.png)](examples/nulldrop-error-manga.html) |
+|:---:|:---:|
+| **Loomlist · Mobile app** · brief `14.1.1.15` | **Nulldrop · 500 error** · brief `27.3.3.19` |
+| `maximalist-expressive` · default · display-first · +utilitarian-dense | `manga-anime` · inverted · body-first · +frutiger-aero |
+| Kinetic gradient typography, marquee tape, layered depth. Utilitarian-dense ⌘K command bar at the bottom is the accent. | Speed lines + screentones + huge slab "500" + Japanese onomatopoeia. One glossy aqua-glass "Return" button as the frutiger-aero accent. |
+
+### Also included
 
 - **`examples/gauge-blueprint.html`** — a fit-selected SLO-monitoring SaaS landing in `technical-blueprint`. Dimension lines annotate the UI as a spec sheet.
 - **`examples/marl-risograph.html`** — a random seed (`risograph-print`) applied to an indie fashion label. Overprinted spot inks, paper grain, duotone-treated placeholder photos. Proof the deck holds up even on an "off" pick.
-- **`examples/frequency-editorial-dark.html`** — same product (a podcaster→sponsor SaaS) at brief `4.2.1.1`: `editorial-magazine` · dark · display-first · +swiss-international. Drop-cap serif hero, dark ink surface, strict Swiss-grid fit report card.
-- **`examples/frequency-midcentury-riso.html`** — same product at brief `20.1.3.12`: `mid-century-modernist` · default · body-first · +risograph-print. Cut-paper show avatars, warm cream surface, fully riso-treated fit report (overprint, halftone, paper grain).
-
-Open the two Frequency files side-by-side for a direct comparison: same product, opposite art direction, both produced by rolling.
 
 ## Install
 

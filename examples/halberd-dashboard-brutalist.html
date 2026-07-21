@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halberd — dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0B0B0A;
+  --ink-2: #141412;
+  --paper: #FFFCEC;
+  --paper-2: #F5EFD6;
+  --brand-yellow: #FFD500;
+  --brand-blue: #2E51FF;
+  --brand-red: #FF3B30;
+  --brand-green: #2AC77A;
+  --hair: rgba(255, 252, 236, 0.15);
+  --hair-strong: rgba(255, 252, 236, 0.35);
+  --riso-paper: #F3EFE0;
+  --riso-pink: #FF48B0;
+  --riso-blue: #0078BF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, .display { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+.app { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+
+/* -- SIDEBAR -- */
+.side {
+  border-right: 3px solid var(--paper);
+  padding: 22px 20px;
+  background: var(--ink);
+}
+.brand {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  padding: 8px 10px 10px;
+  border: 3px solid var(--paper);
+  display: inline-block;
+  margin-bottom: 24px;
+  box-shadow: 4px 4px 0 var(--brand-yellow);
+}
+.side nav ul { list-style: none; }
+.side nav li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: 2px solid var(--paper);
+  color: var(--paper);
+}
+.side nav li:first-child a { border-top: 2px solid var(--paper); }
+.side nav li a.on { background: var(--brand-yellow); color: var(--ink); }
+.side nav li a .cnt {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 2px 6px;
+  border: 2px solid var(--paper);
+  background: var(--ink-2);
+}
+.side nav li a.on .cnt { border-color: var(--ink); background: var(--paper); color: var(--ink); }
+
+.side-footer {
+  margin-top: 32px;
+  padding: 16px;
+  border: 3px solid var(--paper);
+  background: var(--ink-2);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--paper);
+  line-height: 1.5;
+}
+.side-footer strong { display: block; color: var(--brand-yellow); font-size: 13px; margin-bottom: 4px; }
+
+/* -- MAIN -- */
+.main { padding: 28px 40px 60px; }
+
+/* Top bar */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 3px solid var(--paper);
+  gap: 40px;
+}
+.crumbs {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--paper);
+}
+.crumbs .slash { color: var(--brand-yellow); margin: 0 8px; }
+
+.top-actions { display: flex; gap: 12px; }
+.btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  padding: 10px 18px;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--paper);
+  transition: transform 100ms ease, box-shadow 100ms ease;
+}
+.btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--paper); }
+.btn.primary { background: var(--brand-yellow); color: var(--ink); box-shadow: 4px 4px 0 var(--brand-yellow); border-color: var(--ink); }
+.btn.primary:active { box-shadow: 0 0 0 var(--brand-yellow); }
+.btn.blue { background: var(--brand-blue); color: var(--paper); box-shadow: 4px 4px 0 var(--brand-blue); border-color: var(--paper); }
+
+/* -- HERO (display-first) -- */
+.hero {
+  padding: 40px 0 32px;
+  border-bottom: 3px solid var(--paper);
+}
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--brand-yellow);
+  margin-bottom: 12px;
+}
+.hero-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(56px, 8vw, 108px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--paper);
+  margin-bottom: 16px;
+}
+.hero-title .b {
+  display: inline-block;
+  padding: 4px 20px 8px;
+  background: var(--brand-red);
+  color: var(--paper);
+  transform: rotate(-1.4deg);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.hero-sub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--paper);
+  max-width: 560px;
+  line-height: 1.4;
+}
+.hero-sub em {
+  font-style: normal;
+  background: var(--brand-yellow);
+  color: var(--ink);
+  padding: 2px 8px;
+  font-weight: 700;
+}
+
+/* -- STAT ROW -- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  padding: 28px 0;
+  border-bottom: 3px solid var(--paper);
+}
+.stat {
+  border: 3px solid var(--paper);
+  padding: 18px;
+  background: var(--ink-2);
+  box-shadow: 5px 5px 0 var(--paper);
+  position: relative;
+}
+.stat.yellow { background: var(--brand-yellow); color: var(--ink); box-shadow: 5px 5px 0 var(--ink); border-color: var(--ink); }
+.stat.blue { background: var(--brand-blue); color: var(--paper); box-shadow: 5px 5px 0 var(--paper); }
+.stat-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.stat-num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 48px;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+.stat-delta {
+  margin-top: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+}
+.stat.yellow .stat-delta, .stat.blue .stat-delta { opacity: 0.85; }
+.stat-delta.up::before { content: '▲ '; color: var(--brand-green); }
+.stat-delta.dn::before { content: '▼ '; color: var(--brand-red); }
+.stat.yellow .stat-delta.up::before { color: var(--ink); }
+.stat.blue .stat-delta.up::before { color: var(--paper); }
+
+/* -- CONTENT GRID: table + riso accent card -- */
+.grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 32px;
+  padding: 32px 0;
+}
+
+/* TABLE */
+.card {
+  border: 3px solid var(--paper);
+  background: var(--ink-2);
+  box-shadow: 6px 6px 0 var(--paper);
+}
+.card-head {
+  padding: 18px 20px;
+  border-bottom: 3px solid var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--ink);
+}
+.card-head h2 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.card-head .filter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 4px 10px;
+  border: 2px solid var(--paper);
+  background: var(--ink-2);
+}
+
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl th {
+  text-align: left;
+  padding: 12px 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--paper);
+  border-bottom: 2px solid var(--paper);
+  background: var(--ink);
+  font-weight: 500;
+}
+.tbl td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--hair-strong);
+  font-size: 14px;
+  vertical-align: middle;
+}
+.tbl tr:last-child td { border-bottom: none; }
+
+.tbl .task {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  color: var(--paper);
+}
+.tbl .task .id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--brand-yellow);
+  margin-right: 8px;
+  font-weight: 400;
+}
+
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 2px solid var(--paper);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  background: var(--ink);
+}
+.pill.blocked { background: var(--brand-red); color: var(--paper); border-color: var(--ink); }
+.pill.review { background: var(--brand-yellow); color: var(--ink); border-color: var(--ink); }
+.pill.build { background: var(--brand-blue); color: var(--paper); border-color: var(--paper); }
+.pill.done { background: var(--brand-green); color: var(--ink); border-color: var(--ink); }
+
+.owner { display: flex; align-items: center; gap: 8px; }
+.avatar {
+  width: 28px; height: 28px;
+  border: 2px solid var(--paper);
+  background: var(--brand-yellow);
+  color: var(--ink);
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.avatar.b { background: var(--brand-blue); color: var(--paper); }
+.avatar.r { background: var(--brand-red); color: var(--paper); }
+.avatar.g { background: var(--brand-green); color: var(--ink); }
+
+.due { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--paper); }
+.due.overdue { color: var(--brand-red); font-weight: 700; }
+
+/* -- RIGHT COLUMN: RISO ACCENT -- */
+.riso-card {
+  background: var(--riso-paper);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--paper);
+  padding: 24px 22px 26px;
+  position: relative;
+  overflow: hidden;
+}
+.riso-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='r'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2  0 0 0 0 0.14  0 0 0 0 0.1  0 0 0 0.13 0'/></filter><rect width='100%25' height='100%25' filter='url(%23r)'/></svg>");
+}
+.riso-inner { position: relative; z-index: 1; }
+.riso-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--riso-blue);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.riso-heading-wrap { position: relative; margin-bottom: 12px; }
+.riso-heading {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--riso-blue);
+}
+.riso-heading-shadow {
+  position: absolute; inset: 0;
+  color: var(--riso-pink);
+  transform: translate(3px, 3px);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.riso-sub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  max-width: 320px;
+  font-weight: 500;
+}
+.riso-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  border-top: 2px solid var(--ink);
+  padding-top: 16px;
+}
+.riso-metric-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.riso-metric-value {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.riso-caption {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(42,31,26,0.3);
+  font-family: 'Space Grotesk', sans-serif;
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(42,31,26,0.75);
+  line-height: 1.4;
+}
+
+/* Footer */
+.foot {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 3px solid var(--paper);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--paper);
+  opacity: 0.7;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1100px) {
+  .app { grid-template-columns: 1fr; }
+  .side { border-right: none; border-bottom: 3px solid var(--paper); }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <aside class="side">
+    <div class="brand">HALBERD</div>
+    <nav>
+      <ul>
+        <li><a href="#" class="on">Dashboard <span class="cnt">3</span></a></li>
+        <li><a href="#">Tasks <span class="cnt">42</span></a></li>
+        <li><a href="#">Sprints <span class="cnt">2</span></a></li>
+        <li><a href="#">People <span class="cnt">7</span></a></li>
+        <li><a href="#">Docs <span class="cnt">18</span></a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </nav>
+    <div class="side-footer">
+      <strong>SPRINT 24-Q3-W3</strong>
+      Ends Fri, 5pm PT.<br>You are 4 days in.
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div class="top">
+      <div class="crumbs">Halberd <span class="slash">/</span> Cutlass <span class="slash">/</span> Dashboard</div>
+      <div class="top-actions">
+        <button class="btn">Export</button>
+        <button class="btn blue">+ New task</button>
+        <button class="btn primary">Ship it</button>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-eyebrow">Cutlass · Sprint 24-Q3-W3</div>
+      <h1 class="hero-title">3 tasks <span class="b">BLOCKED</span></h1>
+      <p class="hero-sub">Two waiting on <em>design review</em>, one waiting on Rohan. Nothing's on fire. Also nothing's shipping without unblocking these.</p>
+    </section>
+
+    <section class="stats">
+      <div class="stat yellow">
+        <div class="stat-lbl">In progress</div>
+        <div class="stat-num">17</div>
+        <div class="stat-delta up">4 since yesterday</div>
+      </div>
+      <div class="stat">
+        <div class="stat-lbl">In review</div>
+        <div class="stat-num">8</div>
+        <div class="stat-delta up">2 since yesterday</div>
+      </div>
+      <div class="stat blue">
+        <div class="stat-lbl">Blocked</div>
+        <div class="stat-num">3</div>
+        <div class="stat-delta up">1 since Monday</div>
+      </div>
+      <div class="stat">
+        <div class="stat-lbl">Shipped this sprint</div>
+        <div class="stat-num">14</div>
+        <div class="stat-delta up">Ahead of last sprint by 3</div>
+      </div>
+    </section>
+
+    <section class="grid">
+
+      <div class="card">
+        <div class="card-head">
+          <h2>Attention required</h2>
+          <span class="filter">FILTER: BLOCKED · REVIEW</span>
+        </div>
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Status</th>
+              <th>Owner</th>
+              <th>Due</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="task"><span class="id">CUT-482</span>Recompute audience overlap on nightly cron</td>
+              <td><span class="pill blocked">Blocked</span></td>
+              <td><div class="owner"><div class="avatar b">MA</div>Marta</div></td>
+              <td class="due overdue">Overdue 2d</td>
+            </tr>
+            <tr>
+              <td class="task"><span class="id">CUT-476</span>Migrate legacy /v1/annotations to Highlights</td>
+              <td><span class="pill blocked">Blocked</span></td>
+              <td><div class="owner"><div class="avatar">RO</div>Rohan</div></td>
+              <td class="due overdue">Overdue 1d</td>
+            </tr>
+            <tr>
+              <td class="task"><span class="id">CUT-479</span>Onboarding empty-state copy</td>
+              <td><span class="pill blocked">Blocked</span></td>
+              <td><div class="owner"><div class="avatar r">SI</div>Simone</div></td>
+              <td class="due">Fri</td>
+            </tr>
+            <tr>
+              <td class="task"><span class="id">CUT-471</span>Redesign the Fit Report card layout</td>
+              <td><span class="pill review">In review</span></td>
+              <td><div class="owner"><div class="avatar g">JU</div>Julian</div></td>
+              <td class="due">Thu</td>
+            </tr>
+            <tr>
+              <td class="task"><span class="id">CUT-468</span>Rate-limit response on burst uploads</td>
+              <td><span class="pill review">In review</span></td>
+              <td><div class="owner"><div class="avatar b">MA</div>Marta</div></td>
+              <td class="due">Thu</td>
+            </tr>
+            <tr>
+              <td class="task"><span class="id">CUT-465</span>Sponsor-search facets, second pass</td>
+              <td><span class="pill build">Building</span></td>
+              <td><div class="owner"><div class="avatar">RO</div>Rohan</div></td>
+              <td class="due">Fri</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- RISO ACCENT: the "sprint pulse" card, one surface only -->
+      <div class="riso-card">
+        <div class="riso-inner">
+          <div class="riso-eyebrow">Sprint pulse · daily</div>
+          <div class="riso-heading-wrap">
+            <div class="riso-heading">
+              <span class="riso-heading-shadow" aria-hidden="true">Slower than last week</span>
+              Slower than last week
+            </div>
+          </div>
+          <p class="riso-sub">You closed 4 tasks on Monday, 3 Tuesday, 2 Wednesday, 1 Thursday. Not a slump yet, but the shape is one.</p>
+
+          <div class="riso-metrics">
+            <div>
+              <div class="riso-metric-label">Closes / day</div>
+              <div class="riso-metric-value">2.5</div>
+            </div>
+            <div>
+              <div class="riso-metric-label">vs last sprint</div>
+              <div class="riso-metric-value">−34%</div>
+            </div>
+            <div>
+              <div class="riso-metric-label">Median PR review</div>
+              <div class="riso-metric-value">4.2h</div>
+            </div>
+            <div>
+              <div class="riso-metric-label">Longest open</div>
+              <div class="riso-metric-value">CUT-482</div>
+            </div>
+          </div>
+
+          <p class="riso-caption">Printed daily. Ink smudges. If the shape holds through Thursday, take it seriously.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="foot">
+      <div>Halberd v2.11 · signed in as rob@marker.dev</div>
+      <div>rolled 2.2.1.12 · neo-brutalist · dark · display-first · +risograph-print</div>
+    </footer>
+
+  </main>
+</div>
+</body>
+</html>
