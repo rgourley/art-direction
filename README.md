@@ -8,8 +8,6 @@ Every quality adjective (clean, modern, sleek, minimal, professional) resolves t
 
 This skill aims somewhere else, on purpose.
 
-The image above was designed by the skill on itself. The original random roll landed on `botanical-plate` — which needs real illustration craft that inline SVG can't produce cleanly. That surfaced a gap in the skill, now baked in as a hard rule (see [assets.md §3](references/assets.md) — don't hand-draw complex organic illustration; use public-domain illustration, a treated photograph, type-as-specimen, or a documented fit-override). Fit-override applied: `editorial-magazine · dark · display-first`. The dogfood held up; the rule tightened.
-
 ## How it works
 
 Three levers move away from the mean, and the skill pulls all three before any code is written:
