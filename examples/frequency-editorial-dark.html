@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frequency · The quiet case for making your show findable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@300;400;500;600&family=Arimo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1A1A;
+  --ink-2: #221E1A;
+  --cream: #FAF7F2;
+  --cream-dim: rgba(250, 247, 242, 0.72);
+  --cream-fade: rgba(250, 247, 242, 0.48);
+  --editorial-red: #C1272D;
+  --swiss-red: #E30613;
+  --hair: #2E2A26;
+  --hair-strong: #45403A;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 300;
+  letter-spacing: -0.005em;
+}
+
+a { color: inherit; }
+
+/* Kill typographic orphans and ragged headline breaks. */
+h1, h2, .display-xl, .display, .h2, .fit-headline, .tier-name, .tier-price {
+  text-wrap: balance;
+}
+p, .hero-lede, .essay-body p, .tier-desc, .figure-caption, .pullquote, .fit-sub, .fit-metric-delta, .byline, .colophon, .lede {
+  text-wrap: pretty;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* -- Typography scales (display-first) -- */
+.display-xl {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(64px, 11vw, 152px);
+  font-weight: 400;
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  font-variation-settings: "opsz" 144;
+}
+
+.display {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(42px, 5.6vw, 84px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.028em;
+  font-variation-settings: "opsz" 144;
+}
+
+.h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 40px;
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* -- Section labels (editorial small caps) -- */
+.section-label {
+  font-family: 'Fraunces', serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: var(--editorial-red);
+  font-weight: 500;
+  margin-bottom: 28px;
+  font-variation-settings: "opsz" 9;
+}
+
+.byline {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--cream-dim);
+  line-height: 1.5;
+}
+
+/* -- Top nav -- */
+.topnav {
+  padding: 28px 0 20px;
+  border-bottom: 1px solid var(--hair);
+}
+
+.topnav-inner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.wordmark {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-variation-settings: "opsz" 144;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.wordmark .issue {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--cream-fade);
+  font-weight: 500;
+}
+
+.nav-items {
+  display: flex;
+  gap: 36px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--cream-dim);
+}
+
+.nav-items a { text-decoration: none; transition: color 150ms ease; }
+.nav-items a:hover { color: var(--cream); }
+
+/* -- Hero -- */
+.hero { padding: 96px 0 84px; border-bottom: 1px solid var(--hair); }
+
+.hero-tag { margin-bottom: 44px; max-width: 520px; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 72px;
+  align-items: end;
+}
+
+.hero-headline::first-letter {
+  color: var(--editorial-red);
+  font-weight: 700;
+}
+
+.hero-lede {
+  margin-top: 36px;
+  font-size: 18px;
+  line-height: 1.55;
+  max-width: 620px;
+  color: var(--cream-dim);
+  font-weight: 300;
+}
+
+.hero-lede em {
+  color: var(--cream);
+  font-style: italic;
+  font-family: 'Fraunces', serif;
+}
+
+.hero-cta {
+  margin-top: 42px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 16px 30px;
+  border: 1px solid var(--cream);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  transition: background 140ms ease, color 140ms ease;
+}
+
+.hero-cta:hover { background: var(--cream); color: var(--ink); }
+.hero-cta .arrow { font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; }
+
+/* Pull quote hanging in margin */
+.pullquote {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--cream);
+  border-left: 1px solid var(--editorial-red);
+  padding-left: 22px;
+  align-self: end;
+}
+
+.pullquote cite {
+  display: block;
+  margin-top: 18px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--cream-fade);
+  font-weight: 500;
+}
+
+/* -- Editorial essay sections -- */
+.essay { padding: 96px 0; border-bottom: 1px solid var(--hair); }
+
+.essay-grid {
+  display: grid;
+  grid-template-columns: 1fr 660px 1fr;
+  gap: 60px;
+}
+
+.essay-heading { grid-column: 2; margin-bottom: 28px; }
+
+.essay-body {
+  grid-column: 2;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--cream);
+  font-weight: 400;
+}
+
+.essay-body p + p { margin-top: 1.4em; }
+
+.essay-body p:first-of-type::first-letter {
+  font-family: 'Fraunces', serif;
+  font-size: 68px;
+  float: left;
+  line-height: 0.88;
+  padding: 8px 14px 0 0;
+  color: var(--editorial-red);
+  font-weight: 700;
+}
+
+/* -- Figure -- */
+.figure { padding: 48px 0 72px; border-bottom: 1px solid var(--hair); }
+
+.figure-image {
+  aspect-ratio: 16 / 8;
+  background:
+    radial-gradient(ellipse at 25% 40%, rgba(193, 39, 45, 0.28) 0%, transparent 42%),
+    radial-gradient(ellipse at 78% 62%, rgba(250, 247, 242, 0.08) 0%, transparent 50%),
+    linear-gradient(140deg, #1F1B18 0%, #3A2F27 55%, #6B5A48 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.figure-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 3px);
+  mix-blend-mode: overlay;
+}
+
+.figure-caption {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--cream-fade);
+  font-style: italic;
+  font-family: 'Fraunces', serif;
+  max-width: 700px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------
+   SWISS ACCENT: THE FIT REPORT
+   Strict 12-col grid, Arimo, tight tracking, hairlines.
+   One saturated Swiss red for the match number.
+--------------------------------------------------- */
+.fit-section { padding: 104px 0 0; border-bottom: 1px solid var(--hair); }
+
+.fit-intro { max-width: 720px; margin-bottom: 56px; }
+
+.fit-intro .lede {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--cream-dim);
+  margin-top: 22px;
+  font-style: italic;
+}
+
+.fit-card {
+  font-family: 'Arimo', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--ink);
+  border-top: 2px solid var(--swiss-red);
+  border-bottom: 1px solid var(--hair);
+  padding: 44px 0 56px;
+  margin-bottom: 40px;
+}
+
+.fit-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 32px;
+  row-gap: 40px;
+}
+
+.fit-col-8 { grid-column: span 8; }
+.fit-col-4 { grid-column: span 4; }
+.fit-col-3 { grid-column: span 3; }
+.fit-col-12 { grid-column: 1 / -1; }
+
+.fit-eyebrow {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--cream-fade);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.fit-headline {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.fit-sub {
+  font-size: 13px;
+  color: var(--cream-dim);
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 480px;
+}
+
+.fit-score-block {
+  border-top: 1px solid var(--hair-strong);
+  padding-top: 20px;
+}
+
+.fit-score-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--cream-fade);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.fit-score-value {
+  font-size: 88px;
+  font-weight: 700;
+  color: var(--swiss-red);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.fit-score-scale {
+  font-size: 14px;
+  color: var(--cream-fade);
+  font-weight: 400;
+  margin-left: 4px;
+  letter-spacing: 0;
+}
+
+.fit-metric {
+  border-top: 1px solid var(--hair-strong);
+  padding-top: 18px;
+}
+
+.fit-metric-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--cream-fade);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.fit-metric-value {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.fit-metric-delta {
+  font-size: 12px;
+  color: var(--cream-dim);
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+.fit-table {
+  border-top: 1px solid var(--hair-strong);
+  padding-top: 28px;
+  margin-top: 4px;
+}
+
+.fit-table-heading {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--cream-fade);
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+
+.fit-table-row {
+  display: grid;
+  grid-template-columns: 3fr 1.4fr 1.4fr 1fr;
+  gap: 32px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--hair);
+  font-size: 13px;
+  align-items: baseline;
+}
+
+.fit-table-row.head {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--cream-fade);
+  border-bottom: 1px solid var(--cream-dim);
+  padding-bottom: 12px;
+  padding-top: 0;
+}
+
+.fit-table-row .val { font-weight: 400; color: var(--cream); }
+.fit-table-row .val-num { font-variant-numeric: tabular-nums; font-weight: 500; color: var(--cream); }
+.fit-table-row .match {
+  color: var(--swiss-red);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.fit-table-row.head .end { text-align: right; }
+
+/* -- Pricing -- */
+.pricing { padding: 100px 0; border-bottom: 1px solid var(--hair); }
+
+.pricing-heading { max-width: 720px; margin-bottom: 60px; }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+}
+
+.tier {
+  border-top: 1px solid var(--cream);
+  padding-top: 32px;
+}
+
+.tier-name {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.tier-price {
+  font-family: 'Fraunces', serif;
+  font-size: 56px;
+  margin-bottom: 24px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.tier-price .per {
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: var(--cream-fade);
+  letter-spacing: 0;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.tier-desc {
+  font-size: 15px;
+  color: var(--cream-dim);
+  line-height: 1.55;
+  margin-bottom: 28px;
+  max-width: 280px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+}
+
+.tier ul { list-style: none; border-top: 1px solid var(--hair); padding-top: 20px; }
+.tier li { font-size: 13px; color: var(--cream-dim); padding: 8px 0; font-weight: 400; }
+.tier li::before {
+  content: '·';
+  color: var(--editorial-red);
+  margin-right: 12px;
+  font-weight: 700;
+}
+
+/* -- Footer -- */
+.footer { padding: 56px 0 72px; font-size: 12px; color: var(--cream-fade); }
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+.colophon {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--cream-dim);
+  max-width: 480px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+/* -- Responsive -- */
+@media (max-width: 900px) {
+  .container { padding: 0 24px; }
+  .hero-grid, .essay-grid { grid-template-columns: 1fr; gap: 40px; }
+  .essay-body, .essay-heading { grid-column: 1; }
+  .pricing-grid { grid-template-columns: 1fr; gap: 32px; }
+  .fit-col-8, .fit-col-4, .fit-col-3 { grid-column: 1 / -1; }
+  .fit-table-row { grid-template-columns: 1fr 1fr; row-gap: 4px; }
+  .footer-grid { flex-direction: column; align-items: flex-start; }
+  .colophon { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="container topnav-inner">
+    <div class="wordmark">Frequency<span class="issue">Issue 001</span></div>
+    <nav class="nav-items">
+      <a href="#work">How it works</a>
+      <a href="#report">The Fit Report</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#login">Sign in</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <p class="byline hero-tag">A field guide to independent sponsorship, for the shows that don't have an agent.</p>
+    <div class="hero-grid">
+      <div>
+        <h1 class="display-xl hero-headline">Sponsors have a shortlist. You're not on it.</h1>
+        <p class="hero-lede">Somewhere, a growth marketer at a brand you'd happily wear is scrolling for a podcast whose audience overlaps yours by seventy-something percent. She's not going to find you. Not because your show isn't good, and not because your audience is small. Because <em>the map she is reading was drawn for someone else</em>.</p>
+        <a href="#" class="hero-cta">Read your first fit report <span class="arrow">→</span></a>
+      </div>
+      <blockquote class="pullquote">
+        "You don't have a marketing problem. You have a discovery problem, and you've been told to solve it with a media kit."
+        <cite>The premise</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="essay" id="work">
+  <div class="container">
+    <div class="essay-grid">
+      <h2 class="h2 essay-heading">There are three ways a sponsor finds a show. Two of them cost you money.</h2>
+      <div class="essay-body">
+        <p>The first way is through an agency, which is fine if your show already prints money, and disappointing if it doesn't. The second is through a network, which will happily take twenty-five percent of your rate and then ask you to say the word "unfortunately" less. The third way is the one nobody writes down. A sponsor looks at their existing customers, finds three podcasts those customers already subscribe to, and sends an email to whoever answers first.</p>
+        <p>Frequency writes down the third way. We build a public index of independent shows, tagged by what their audience actually buys, and let sponsors filter it the way they filter everything else. When someone browses for a show like yours, you are in the list. When they open your card, you have a rate to quote and a pitch to send. That is the whole product.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="figure">
+  <div class="container">
+    <div class="figure-image"></div>
+    <p class="figure-caption">Figure 1. A composite of the twelve most-searched sponsor briefs from the last quarter, weighted by the show categories they resolved to. The largest brief, unsurprisingly, was "finance for people under thirty-five." The most competitive was coffee.</p>
+  </div>
+</section>
+
+<section class="fit-section" id="report">
+  <div class="container">
+    <div class="fit-intro">
+      <div class="section-label">The Fit Report</div>
+      <h2 class="display">One page. Everything a sponsor needs to say yes without booking a call.</h2>
+      <p class="lede">The report is what the brand actually reads. It is set in a rigid grid because attention is rigid too, and it hides nothing.</p>
+    </div>
+  </div>
+
+  <div class="fit-card">
+    <div class="container">
+      <div class="fit-grid">
+        <div class="fit-col-8">
+          <div class="fit-eyebrow">Fit Report · Draft 03 · Aug 4</div>
+          <div class="fit-headline">A Thoughtful Racket</div>
+          <div class="fit-sub">Weekly interview podcast on tennis, culture, and work. Hosted by Marta Aguilar. Est. 2023. Currently syndicated on Apple, Spotify, and Overcast.</div>
+        </div>
+        <div class="fit-col-4">
+          <div class="fit-score-block">
+            <div class="fit-score-label">Match score · Wilson Sporting Goods</div>
+            <div class="fit-score-value">87<span class="fit-score-scale">/100</span></div>
+          </div>
+        </div>
+
+        <div class="fit-col-3 fit-metric">
+          <div class="fit-metric-label">Downloads / episode</div>
+          <div class="fit-metric-value">42,180</div>
+          <div class="fit-metric-delta">+12% quarter over quarter</div>
+        </div>
+        <div class="fit-col-3 fit-metric">
+          <div class="fit-metric-label">Audience median age</div>
+          <div class="fit-metric-value">34</div>
+          <div class="fit-metric-delta">72% US · 14% UK · 8% Canada</div>
+        </div>
+        <div class="fit-col-3 fit-metric">
+          <div class="fit-metric-label">Suggested CPM</div>
+          <div class="fit-metric-value">$38</div>
+          <div class="fit-metric-delta">Mid-roll, host-read, 60 seconds</div>
+        </div>
+        <div class="fit-col-3 fit-metric">
+          <div class="fit-metric-label">Ad slots open</div>
+          <div class="fit-metric-value">6</div>
+          <div class="fit-metric-delta">Next available · Aug 12</div>
+        </div>
+
+        <div class="fit-col-12 fit-table">
+          <div class="fit-table-heading">Audience overlap with your existing customers</div>
+          <div class="fit-table-row head">
+            <div>Category</div>
+            <div>Their audience</div>
+            <div>Your buyers</div>
+            <div class="end">Overlap</div>
+          </div>
+          <div class="fit-table-row">
+            <div class="val">Racquet sports · purchased in the last 12 months</div>
+            <div class="val-num">31%</div>
+            <div class="val-num">44%</div>
+            <div class="match">92%</div>
+          </div>
+          <div class="fit-table-row">
+            <div class="val">Reads a book a month</div>
+            <div class="val-num">64%</div>
+            <div class="val-num">51%</div>
+            <div class="match">81%</div>
+          </div>
+          <div class="fit-table-row">
+            <div class="val">Owns a Wilson product</div>
+            <div class="val-num">18%</div>
+            <div class="val-num">27%</div>
+            <div class="match">76%</div>
+          </div>
+          <div class="fit-table-row">
+            <div class="val">Household income above $150k</div>
+            <div class="val-num">38%</div>
+            <div class="val-num">42%</div>
+            <div class="match">73%</div>
+          </div>
+          <div class="fit-table-row">
+            <div class="val">Purchases from small brands in the last 90 days</div>
+            <div class="val-num">57%</div>
+            <div class="val-num">31%</div>
+            <div class="match">68%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="essay">
+  <div class="container">
+    <div class="essay-grid">
+      <h2 class="h2 essay-heading">You get a rate card, one pitch template, and a list of interested brands. The rest is you.</h2>
+      <div class="essay-body">
+        <p>Frequency is not a marketplace. There is no bid button. No automated matching. No AI writing your pitch, because the pitch is the only interesting part. What Frequency does is what you shouldn't have to do yourself. It puts your show on the map that a brand's growth marketer already reads, with the data she was going to ask for anyway. From there, the two of you talk like adults.</p>
+        <p>The founders you'll meet on the platform are running independent shows because they wanted to keep the ownership. That is the whole reason we exist. If we could make it more efficient than that, we would. We haven't found a way that doesn't take some of the ownership back.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-heading">
+      <div class="section-label">The subscription</div>
+      <h2 class="display">Three tiers. All of them assume you already have a show.</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="tier">
+        <div class="tier-name">Reader</div>
+        <div class="tier-price">Free</div>
+        <div class="tier-desc">Your show is listed, and any brand can find it. You see one sample fit report a month.</div>
+        <ul>
+          <li>Listed in the public index</li>
+          <li>Basic show card</li>
+          <li>One sample fit report each month</li>
+          <li>Read-only inbox</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Contributor</div>
+        <div class="tier-price">$24<span class="per">/month</span></div>
+        <div class="tier-desc">You see every brand searching for shows like yours, and you send the pitches yourself.</div>
+        <ul>
+          <li>All fit reports, on demand</li>
+          <li>Suggested CPM and rate card</li>
+          <li>Pitch template library</li>
+          <li>Direct message any interested brand</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Editor</div>
+        <div class="tier-price">$78<span class="per">/month</span></div>
+        <div class="tier-desc">For someone running two or more shows, or one show that pays the rent. The tier that scales with the work.</div>
+        <ul>
+          <li>Everything in Contributor</li>
+          <li>Up to five shows in one account</li>
+          <li>Quarterly audience audit</li>
+          <li>Priority placement on relevant searches</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="wordmark" style="font-size: 16px;">Frequency<span class="issue">Issue 001</span></div>
+      <div style="margin-top: 8px;">A quiet publication about independent audio.</div>
+    </div>
+    <p class="colophon">Set in Fraunces and Arimo. Dark by choice, not by fashion. Rolled from the art-direction skill, brief 4.2.1.1 · editorial-magazine · dark · display-first · +swiss-international.</p>
+  </div>
+</footer>
+
+</body>
+</html>

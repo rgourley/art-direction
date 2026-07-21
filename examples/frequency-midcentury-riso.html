@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frequency · A field guide to independent sponsorship</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F1E9D2;
+  --paper-warm: #EDE2C5;
+  --ink: #2A2A2A;
+  --ink-soft: rgba(42, 42, 42, 0.72);
+  --ink-fade: rgba(42, 42, 42, 0.48);
+  --brick: #C13B2E;
+  --teal: #3A7D7C;
+  --mustard: #D9A441;
+  --hair: rgba(42, 42, 42, 0.14);
+  --hair-strong: rgba(42, 42, 42, 0.28);
+  /* Riso accent zone */
+  --riso-paper: #F3EFE0;
+  --riso-pink: #FF48B0;
+  --riso-blue: #0078BF;
+  --riso-yellow: #F0B90A;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  font-weight: 400;
+  letter-spacing: -0.003em;
+  position: relative;
+}
+
+/* Paper grain overlay (whole page) — subtle */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.16  0 0 0 0 0.16  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+a { color: inherit; }
+
+/* Kill orphans */
+h1, h2, h3, .display, .headline, .kicker { text-wrap: balance; }
+p, .lede, blockquote, .caption, .tier-desc { text-wrap: pretty; }
+
+/* -- Layout -- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* -- Typography -- */
+.serif { font-family: 'Fraunces', Georgia, serif; font-variation-settings: "opsz" 144; }
+.serif-italic { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-variation-settings: "opsz" 9; }
+
+.display {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(36px, 4.4vw, 56px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+}
+
+.h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 144;
+}
+
+.h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.kicker {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--brick);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.kicker.teal { color: var(--teal); }
+.kicker.mustard { color: var(--mustard); }
+
+/* -- Nav -- */
+.topnav {
+  padding: 28px 0 20px;
+  border-bottom: 1px solid var(--hair);
+}
+
+.topnav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+}
+
+.wordmark-mark {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.wordmark-issue {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--ink-fade);
+  font-weight: 500;
+}
+
+.nav-items {
+  display: flex;
+  gap: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.nav-items a { text-decoration: none; transition: color 150ms ease; }
+.nav-items a:hover { color: var(--brick); }
+
+/* -- Hero -- */
+.hero {
+  padding: 88px 0 96px;
+  border-bottom: 1px solid var(--hair);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Denser paper grain in the hero — letterpress texture */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='hg'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.14  0 0 0 0 0.08  0 0 0 0.13 0'/></filter><rect width='100%25' height='100%25' filter='url(%23hg)'/></svg>");
+}
+
+.hero .container { position: relative; z-index: 1; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-illo {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 460px;
+  justify-self: end;
+}
+
+.hero-illo svg { width: 100%; height: 100%; display: block; }
+
+.hero-body { max-width: 560px; position: relative; }
+
+/* Letterpress single-hit register echo behind the hero display headline */
+.hero-body .display {
+  position: relative;
+  display: inline-block;
+}
+.hero-body .display::before {
+  content: attr(data-echo);
+  position: absolute;
+  inset: 0;
+  color: var(--mustard);
+  transform: translate(2px, 3px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.9;
+  mix-blend-mode: multiply;
+}
+
+/* Hand-drawn spot mark near the tagline (Girard / Harper) */
+.hero-tagline-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.hero-tagline-mark {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+.hero-tagline-wrap .hero-tagline { margin-bottom: 0; }
+
+.hero-lede {
+  margin-top: 24px;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  font-weight: 400;
+  max-width: 520px;
+}
+
+.hero-lede em { font-family: 'Fraunces', serif; font-style: italic; color: var(--ink); }
+
+.hero-cta {
+  margin-top: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  background: var(--brick);
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: transform 140ms ease, background 140ms ease;
+}
+.hero-cta:hover { background: var(--ink); transform: translateY(-1px); }
+.hero-cta .arrow { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 18px; }
+
+.hero-tagline {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--teal);
+  font-size: 15px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+/* -- Essay -- */
+.essay { padding: 96px 0; border-bottom: 1px solid var(--hair); }
+
+.essay-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.essay-side { position: sticky; top: 24px; }
+
+.essay-heading {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 34px;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.essay-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink);
+  font-weight: 400;
+  max-width: 640px;
+}
+
+.essay-body p + p { margin-top: 1.2em; }
+
+.essay-body strong { font-weight: 700; color: var(--brick); }
+
+.margin-note {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--mustard);
+  padding-left: 16px;
+  margin-top: 24px;
+  line-height: 1.5;
+}
+
+/* -- Directory: cut-paper show cards -- */
+.directory { padding: 96px 0; border-bottom: 1px solid var(--hair); }
+
+.directory-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 56px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.directory-heading .display { max-width: 640px; }
+
+.directory-heading .lede {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink-soft);
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+.directory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.show-card {
+  background: var(--paper-warm);
+  padding: 28px 24px 24px;
+  border: 1px solid var(--hair);
+  position: relative;
+  transition: transform 160ms ease;
+}
+
+.show-card:hover { transform: translateY(-3px); }
+
+.show-card .avatar {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 20px;
+}
+
+.show-card .avatar svg { width: 100%; height: 100%; display: block; }
+
+.show-card .show-title {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  letter-spacing: -0.015em;
+}
+
+.show-card .show-meta {
+  font-size: 13px;
+  color: var(--ink-fade);
+  font-weight: 500;
+}
+
+.show-card .show-stats {
+  border-top: 1px solid var(--hair);
+  margin-top: 20px;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.show-card .show-stats strong {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   RISO ACCENT ZONE: The Fit Report
+   Overprinted spot inks, misregistration, grain,
+   halftone photos.
+============================================ */
+.fit-section {
+  padding: 96px 0;
+  background: var(--riso-paper);
+  position: relative;
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+  overflow: hidden;
+}
+
+/* Extra riso paper grain, denser than the site */
+.fit-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.7;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='r'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.20  0 0 0 0 0.14  0 0 0 0 0.10  0 0 0 0.14 0'/></filter><rect width='100%25' height='100%25' filter='url(%23r)'/></svg>");
+}
+
+.fit-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.fit-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--riso-blue);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.fit-title-wrap { position: relative; margin-bottom: 40px; max-width: 720px; }
+
+.fit-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--riso-blue);
+  position: relative;
+}
+
+/* Overprint effect: pink layer offset by 2-3px */
+.fit-title-shadow {
+  position: absolute;
+  inset: 0;
+  color: var(--riso-pink);
+  transform: translate(3px, 3px);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.fit-report {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+  align-items: start;
+  border-top: 2px solid var(--ink);
+  padding-top: 32px;
+}
+
+.fit-headline-wrap { position: relative; margin-bottom: 12px; }
+.fit-show-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 42px;
+  line-height: 1;
+  color: var(--riso-blue);
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+.fit-show-name-shadow {
+  position: absolute; inset: 0;
+  color: var(--riso-pink);
+  transform: translate(2px, 2px);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.fit-show-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-top: 8px;
+  font-weight: 500;
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+.fit-metrics-grid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.fit-metric {
+  border-top: 1px solid var(--ink);
+  padding-top: 12px;
+}
+
+.fit-metric-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.fit-metric-value {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.fit-metric-delta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: var(--ink-fade);
+  margin-top: 6px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.fit-score-panel {
+  background: var(--riso-yellow);
+  padding: 32px 28px;
+  text-align: center;
+  position: relative;
+  border: 2px solid var(--ink);
+}
+
+.fit-score-panel::after {
+  /* halftone dot overlay */
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(42,42,42,0.15) 1px, transparent 1.4px);
+  background-size: 6px 6px;
+  mix-blend-mode: multiply;
+}
+
+.fit-score-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.fit-score-value-wrap { position: relative; }
+
+.fit-score-value {
+  font-family: 'DM Serif Display', serif;
+  font-size: 116px;
+  line-height: 0.85;
+  font-weight: 400;
+  color: var(--riso-blue);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+  position: relative;
+  z-index: 1;
+}
+.fit-score-shadow {
+  position: absolute; inset: 0;
+  color: var(--riso-pink);
+  transform: translate(4px, 4px);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.fit-score-scale {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-left: 6px;
+  letter-spacing: 0;
+}
+.fit-score-brand {
+  margin-top: 12px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+.fit-host {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ink);
+}
+
+.fit-host-photo {
+  width: 88px;
+  height: 88px;
+  background:
+    radial-gradient(circle, var(--riso-pink) 0.8px, transparent 1.2px) 0 0 / 4px 4px,
+    linear-gradient(135deg, var(--riso-blue) 0%, #003a5c 100%);
+  position: relative;
+  flex-shrink: 0;
+  border: 2px solid var(--ink);
+}
+.fit-host-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 35% 40%, rgba(240,185,10,0.5) 0%, transparent 45%);
+  mix-blend-mode: screen;
+}
+
+.fit-host-text {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.fit-host-text strong {
+  display: block;
+  font-style: normal;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.fit-caption {
+  margin-top: 40px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-soft);
+  max-width: 720px;
+  line-height: 1.5;
+}
+
+/* -- Pricing -- */
+.pricing { padding: 96px 0; border-bottom: 1px solid var(--hair); }
+
+.pricing-heading { max-width: 680px; margin-bottom: 56px; }
+
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+
+.tier {
+  background: var(--paper-warm);
+  padding: 32px 28px 28px;
+  border: 1px solid var(--hair);
+  position: relative;
+}
+
+.tier.featured { background: var(--mustard); border-color: var(--ink); }
+.tier.featured .tier-price, .tier.featured .tier-name { color: var(--ink); }
+
+.tier-name {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: var(--brick);
+  letter-spacing: -0.01em;
+}
+
+.tier-price {
+  font-family: 'Fraunces', serif;
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.tier-price .per {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-weight: 500;
+  margin-left: 4px;
+  letter-spacing: 0;
+}
+
+.tier-desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+.tier ul { list-style: none; border-top: 1px solid var(--hair); padding-top: 20px; }
+.tier li { font-size: 13px; color: var(--ink-soft); padding: 6px 0 6px 20px; font-weight: 500; position: relative; }
+.tier li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 8px;
+  height: 8px;
+  background: var(--brick);
+  border-radius: 50%;
+}
+.tier.featured li::before { background: var(--teal); }
+
+/* -- Footer -- */
+.footer { padding: 56px 0 72px; font-size: 13px; color: var(--ink-soft); }
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+.colophon {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-soft);
+  max-width: 480px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .container { padding: 0 24px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-illo { max-width: 320px; justify-self: start; order: -1; }
+  .essay-grid { grid-template-columns: 1fr; gap: 32px; }
+  .essay-side { position: static; }
+  .directory-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .fit-report { grid-template-columns: 1fr; }
+  .fit-metrics-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; gap: 20px; }
+  .footer-grid { flex-direction: column; align-items: flex-start; }
+  .colophon { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="container topnav-inner">
+    <div class="wordmark">
+      <!-- Cut-paper mark: sound wave / bird hybrid -->
+      <svg class="wordmark-mark" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="30" cy="30" r="28" fill="#C13B2E"/>
+        <path d="M18 30 Q22 18, 30 30 T42 30" stroke="#F1E9D2" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <circle cx="30" cy="30" r="4" fill="#D9A441"/>
+      </svg>
+      Frequency
+      <span class="wordmark-issue">Issue 001</span>
+    </div>
+    <nav class="nav-items">
+      <a href="#how">How it works</a>
+      <a href="#directory">The directory</a>
+      <a href="#report">The Fit Report</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-body">
+        <div class="hero-tagline-wrap">
+          <svg class="hero-tagline-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="20" cy="20" r="4" fill="#C13B2E"/>
+            <path d="M20 4 L20 12 M20 28 L20 36 M4 20 L12 20 M28 20 L36 20 M9 9 L14 14 M26 26 L31 31 M9 31 L14 26 M26 14 L31 9" stroke="#3A7D7C" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <div class="hero-tagline">A field guide to independent sponsorship.</div>
+        </div>
+        <h1 class="display" data-echo="The show you make on Tuesdays deserves a rate card.">The show you make on Tuesdays deserves a rate card.</h1>
+        <p class="hero-lede">Somewhere, a growth marketer at a brand you would happily wear is looking for a podcast whose audience overlaps yours by seventy-something percent. She is not going to find you. Not because your show isn't good. Because <em>the map she is reading was drawn for someone else</em>.</p>
+        <a href="#" class="hero-cta">Draw up my fit report <span class="arrow">→</span></a>
+      </div>
+      <div class="hero-illo">
+        <!-- Cut-paper: sun + microphone + bird -->
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Sun -->
+          <circle cx="360" cy="140" r="90" fill="#D9A441"/>
+          <!-- Sun rays (simple triangles) -->
+          <g fill="#D9A441">
+            <polygon points="360,20 350,50 370,50"/>
+            <polygon points="460,60 430,80 450,95"/>
+            <polygon points="480,140 450,130 450,150"/>
+          </g>
+          <!-- Teal shape (a hill / horizon) -->
+          <path d="M0 380 Q160 300, 320 360 T500 340 L500 500 L0 500 Z" fill="#3A7D7C"/>
+          <!-- Brick microphone (body + stand) -->
+          <rect x="180" y="180" width="80" height="140" rx="40" fill="#C13B2E"/>
+          <rect x="215" y="320" width="10" height="60" fill="#2A2A2A"/>
+          <rect x="180" y="380" width="80" height="6" fill="#2A2A2A"/>
+          <!-- Cream mic detail -->
+          <rect x="192" y="200" width="56" height="20" rx="10" fill="#F1E9D2"/>
+          <rect x="192" y="230" width="56" height="20" rx="10" fill="#F1E9D2"/>
+          <rect x="192" y="260" width="56" height="20" rx="10" fill="#F1E9D2"/>
+          <!-- Bird (Charley Harper-ish) -->
+          <ellipse cx="120" cy="180" rx="52" ry="30" fill="#2A2A2A"/>
+          <circle cx="150" cy="164" r="20" fill="#2A2A2A"/>
+          <polygon points="170,158 190,166 168,172" fill="#D9A441"/>
+          <circle cx="156" cy="158" r="2.5" fill="#F1E9D2"/>
+          <path d="M85 175 Q75 195, 100 200 Q95 187, 85 175 Z" fill="#C13B2E"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="essay" id="how">
+  <div class="container">
+    <div class="essay-grid">
+      <div class="essay-side">
+        <div class="kicker teal">Chapter 01</div>
+        <h2 class="essay-heading">There are three ways a sponsor finds a show. Two of them cost you money.</h2>
+        <p class="margin-note">"The third way is the one nobody wrote down. So we wrote it down."</p>
+      </div>
+      <div class="essay-body">
+        <p>The first way is through an agency, which is fine if your show already prints money and disappointing if it doesn't. The second is through a network, which will take twenty-five percent of your rate and then quietly ask you to say the word "unfortunately" less.</p>
+        <p>The third way is the one nobody writes down. A sponsor looks at their existing customers, notices three podcasts those customers already subscribe to, and sends an email to whoever answers first.</p>
+        <p><strong>Frequency writes down the third way.</strong> We publish an index of independent shows, tagged by what their audience actually buys, and let brands filter it the way they filter everything else. When someone browses for a show like yours, you are in the list. When they open your card, you have a rate to quote and a pitch ready to send. That is the whole product.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="directory" id="directory">
+  <div class="container">
+    <div class="directory-heading">
+      <div>
+        <div class="kicker mustard">The Directory</div>
+        <h2 class="display">Every show gets a card. Every card is a small brand.</h2>
+      </div>
+      <p class="lede">Cut-paper avatars, not stock headshots. A brand's growth marketer scans this like a magazine spread, not a spreadsheet.</p>
+    </div>
+    <div class="directory-grid">
+
+      <div class="show-card">
+        <div class="avatar">
+          <!-- Tennis racket + ball, cut-paper -->
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="200" height="200" fill="#EDE2C5"/>
+            <circle cx="76" cy="88" r="52" fill="#3A7D7C"/>
+            <circle cx="76" cy="88" r="38" fill="#EDE2C5"/>
+            <g stroke="#2A2A2A" stroke-width="2">
+              <line x1="42" y1="88" x2="110" y2="88"/>
+              <line x1="76" y1="52" x2="76" y2="124"/>
+              <line x1="52" y1="66" x2="100" y2="110"/>
+              <line x1="52" y1="110" x2="100" y2="66"/>
+            </g>
+            <rect x="98" y="120" width="10" height="70" transform="rotate(30 103 155)" fill="#2A2A2A"/>
+            <circle cx="150" cy="150" r="28" fill="#D9A441"/>
+            <path d="M124 150 Q150 130, 176 150" stroke="#C13B2E" stroke-width="2.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="show-title">A Thoughtful Racket</div>
+        <div class="show-meta">Weekly · Sport, culture, work</div>
+        <div class="show-stats">
+          <div>Downloads<strong>42.1k</strong></div>
+          <div>CPM<strong>$38</strong></div>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="avatar">
+          <!-- Coffee cup with steam, cut-paper -->
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="200" height="200" fill="#EDE2C5"/>
+            <path d="M70 40 Q76 20, 82 40 Q88 20, 94 40" stroke="#3A7D7C" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M100 40 Q106 20, 112 40 Q118 20, 124 40" stroke="#3A7D7C" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <rect x="50" y="80" width="100" height="80" rx="6" fill="#C13B2E"/>
+            <path d="M150 100 Q180 100, 180 130 Q180 160, 150 160" stroke="#C13B2E" stroke-width="12" fill="none"/>
+            <ellipse cx="100" cy="90" rx="42" ry="8" fill="#2A2A2A"/>
+            <rect x="50" y="160" width="100" height="8" fill="#2A2A2A"/>
+          </svg>
+        </div>
+        <div class="show-title">Small Batch</div>
+        <div class="show-meta">Fortnightly · Small business, food</div>
+        <div class="show-stats">
+          <div>Downloads<strong>18.4k</strong></div>
+          <div>CPM<strong>$42</strong></div>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="avatar">
+          <!-- Moon + star, cut-paper -->
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="200" height="200" fill="#EDE2C5"/>
+            <circle cx="0" cy="0" r="200" fill="#3A7D7C" opacity="0"/>
+            <path d="M0 0 L200 0 L200 200 L0 200 Z" fill="#EDE2C5"/>
+            <circle cx="130" cy="80" r="56" fill="#D9A441"/>
+            <circle cx="152" cy="72" r="52" fill="#EDE2C5"/>
+            <polygon points="60,130 68,150 90,150 72,160 78,180 60,168 42,180 48,160 30,150 52,150" fill="#C13B2E"/>
+            <circle cx="35" cy="60" r="3" fill="#2A2A2A"/>
+            <circle cx="80" cy="45" r="2.5" fill="#2A2A2A"/>
+            <circle cx="170" cy="150" r="2.5" fill="#2A2A2A"/>
+          </svg>
+        </div>
+        <div class="show-title">The Later Hours</div>
+        <div class="show-meta">Weekly · Interviews, night owls</div>
+        <div class="show-stats">
+          <div>Downloads<strong>67.9k</strong></div>
+          <div>CPM<strong>$44</strong></div>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="avatar">
+          <!-- Flame, cut-paper -->
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="200" height="200" fill="#EDE2C5"/>
+            <path d="M100 40 Q60 90, 60 130 Q60 170, 100 170 Q140 170, 140 130 Q140 90, 100 40 Z" fill="#C13B2E"/>
+            <path d="M100 70 Q78 105, 78 130 Q78 160, 100 160 Q122 160, 122 130 Q122 105, 100 70 Z" fill="#D9A441"/>
+            <path d="M100 100 Q90 120, 90 138 Q90 156, 100 156 Q110 156, 110 138 Q110 120, 100 100 Z" fill="#F1E9D2"/>
+            <rect x="55" y="170" width="90" height="10" fill="#2A2A2A"/>
+          </svg>
+        </div>
+        <div class="show-title">Signal Fire</div>
+        <div class="show-meta">Twice weekly · Tech, tools, taste</div>
+        <div class="show-stats">
+          <div>Downloads<strong>103k</strong></div>
+          <div>CPM<strong>$52</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="fit-section" id="report">
+  <div class="container">
+    <div class="fit-inner">
+      <div class="fit-eyebrow">Sample · Fit Report No. 03</div>
+      <div class="fit-title-wrap">
+        <div class="fit-title">
+          <span class="fit-title-shadow" aria-hidden="true">One page. Everything a sponsor needs.</span>
+          One page. Everything a sponsor needs.
+        </div>
+      </div>
+
+      <div class="fit-report">
+        <div>
+          <div class="fit-headline-wrap">
+            <div class="fit-show-name">
+              <span class="fit-show-name-shadow" aria-hidden="true">A Thoughtful Racket</span>
+              A Thoughtful Racket
+            </div>
+          </div>
+          <div class="fit-show-sub">Weekly interview podcast on tennis, culture, and work. Hosted by Marta Aguilar. Est. 2023.</div>
+
+          <div class="fit-metrics-grid">
+            <div class="fit-metric">
+              <div class="fit-metric-label">Downloads / ep</div>
+              <div class="fit-metric-value">42,180</div>
+              <div class="fit-metric-delta">+12% quarter over quarter</div>
+            </div>
+            <div class="fit-metric">
+              <div class="fit-metric-label">Median age</div>
+              <div class="fit-metric-value">34</div>
+              <div class="fit-metric-delta">72% US · 14% UK · 8% CA</div>
+            </div>
+            <div class="fit-metric">
+              <div class="fit-metric-label">Suggested CPM</div>
+              <div class="fit-metric-value">$38</div>
+              <div class="fit-metric-delta">Mid-roll, host-read, 60s</div>
+            </div>
+            <div class="fit-metric">
+              <div class="fit-metric-label">Ad slots open</div>
+              <div class="fit-metric-value">6</div>
+              <div class="fit-metric-delta">Next available Aug 12</div>
+            </div>
+          </div>
+
+          <div class="fit-host">
+            <div class="fit-host-photo" role="img" aria-label="Halftone portrait of the host"></div>
+            <div class="fit-host-text">
+              <strong>Marta Aguilar, host</strong>
+              "I record every episode on Tuesday afternoons, in a room that smells vaguely of new tennis balls. Reader tip: I say yes to sponsors who send handwritten notes."
+            </div>
+          </div>
+        </div>
+
+        <div class="fit-score-panel">
+          <div class="fit-score-label">Match · Wilson</div>
+          <div class="fit-score-value-wrap">
+            <div class="fit-score-value">
+              <span class="fit-score-shadow" aria-hidden="true">87<span class="fit-score-scale">/100</span></span>
+              87<span class="fit-score-scale">/100</span>
+            </div>
+          </div>
+          <div class="fit-score-brand">Wilson Sporting Goods</div>
+        </div>
+      </div>
+
+      <p class="fit-caption">Every fit report reads like a printed one-pager because that is what growth marketers actually save and email around. Ink smudges. Registration slips a millimeter. We keep it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-heading">
+      <div class="kicker">The subscription</div>
+      <h2 class="display">Three tiers. All of them assume you already have a show.</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="tier">
+        <div class="tier-name">Reader</div>
+        <div class="tier-price">Free</div>
+        <p class="tier-desc">Your show is listed and any brand can find it. You see one sample fit report a month.</p>
+        <ul>
+          <li>Listed in the public directory</li>
+          <li>Basic show card</li>
+          <li>One sample fit report each month</li>
+          <li>Read-only inbox</li>
+        </ul>
+      </div>
+      <div class="tier featured">
+        <div class="tier-name">Contributor</div>
+        <div class="tier-price">$24<span class="per">/month</span></div>
+        <p class="tier-desc">You see every brand searching for shows like yours. You send the pitches yourself.</p>
+        <ul>
+          <li>All fit reports, on demand</li>
+          <li>Suggested CPM and rate card</li>
+          <li>Pitch template library</li>
+          <li>Direct message any interested brand</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Editor</div>
+        <div class="tier-price">$78<span class="per">/month</span></div>
+        <p class="tier-desc">For someone running two shows, or one that pays the rent. Scales with the work.</p>
+        <ul>
+          <li>Everything in Contributor</li>
+          <li>Up to five shows in one account</li>
+          <li>Quarterly audience audit</li>
+          <li>Priority placement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="wordmark" style="font-size: 18px;">
+        <svg class="wordmark-mark" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px;">
+          <circle cx="30" cy="30" r="28" fill="#C13B2E"/>
+          <path d="M18 30 Q22 18, 30 30 T42 30" stroke="#F1E9D2" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <circle cx="30" cy="30" r="4" fill="#D9A441"/>
+        </svg>
+        Frequency<span class="wordmark-issue">Issue 001</span>
+      </div>
+      <div style="margin-top: 8px;">A field guide to independent sponsorship.</div>
+    </div>
+    <p class="colophon">Set in Fraunces, DM Sans, and DM Serif Display. Cut-paper by hand, printed on cream. Rolled from the art-direction skill, brief 20.1.3.12 · mid-century-modernist · default · body-first · +risograph-print.</p>
+  </div>
+</footer>
+
+</body>
+</html>

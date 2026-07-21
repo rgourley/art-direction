@@ -1,6 +1,6 @@
 # Art Direction Deck
 
-Sixteen committed directions for product UI. **None of them is "clean modern SaaS."** That absence is deliberate: the default AI look is the mean of the training data, so it is not on the menu. Every card here is a strong, coherent point of view that a real product or design tradition already proved.
+Thirty-two committed directions for product UI. **None of them is "clean modern SaaS."** That absence is deliberate: the default AI look is the mean of the training data, so it is not on the menu. Every card here is a strong, coherent point of view that a real product or design tradition already proved.
 
 Each card gives: **references** (real, so the model already knows the decisions), **feel**, **type**, **color**, **layout grammar**, **motion**, a **signature move** (the one thing that makes it unmistakable), **imagery** (how to treat photos/illustrations), and **voice** (how the copy should sound, the words get art-directed too). Build every component *and every sentence* to the card you pick. Do not blend cards.
 
@@ -190,12 +190,188 @@ Type notes list a primary (often paid/system) and a `free:` fallback on Google F
 **Imagery:** Film-graded, warm/muted natural-light photography, full-bleed landscapes or textures. Accent with fine botanical/topographic line-art. Never over-saturate.
 **Voice:** Calm, grounded, sensory, unhurried. Concrete and tactile, never rushed. Ex: "Made slowly, from what the land gives." · CTA "Explore."
 
+## 17. bauhaus-constructivist
+**References:** Alexander Rodchenko, El Lissitzky, Bauhaus posters (Herbert Bayer, László Moholy-Nagy), Soviet agit-prop, De Stijl (Mondrian, Rietveld).
+**Feel:** Revolutionary geometry. Type as construction, shapes as language, everything set at a purposeful angle.
+**Type:** A geometric sans or heavy slab, Futura / Rockwell / DIN. `free:` Bebas Neue for display, Work Sans or DM Sans for body. Aggressive weight contrast, tight tracking, all-caps allowed.
+**Color:** Red `#D0021B`, black, white. Occasionally cadmium yellow or ultramarine. Never more than three at once. Flat fills, no gradients ever.
+**Layout:** Diagonal type, hard geometric shapes (circles, triangles, bars) as compositional weight, off-axis grids, elements running off the edge.
+**Motion:** Constructivist snap. Elements slide in on the diagonal, no easing, no bounce.
+**Signature move:** A diagonal composition with a giant red circle or bar behind stacked slab-sans headlines.
+**Imagery:** High-contrast B/W photography with red-block overlays, or cut-out figures pasted across geometric fields. Photomontage. Rodchenko-style crops from below.
+**Voice:** Manifesto register. Short imperative lines, all-caps allowed, urgency without hype. Ex: "BUILD. SHIP. REPEAT." · CTA "JOIN THE WORK."
+
+## 18. art-deco
+**References:** A.M. Cassandre posters, Erté, Chrysler Building signage, 1920s ocean-liner and travel posters, Paul Poiret fashion plates.
+**Feel:** Streamlined luxury. Machine-age optimism, geometric elegance, gold on ink.
+**Type:** A geometric display sans or a high-contrast serif with deco proportions. `free:` Poiret One for display, Cormorant Garamond SC or Playfair Display for headings. Small caps and wide tracking on secondary text.
+**Color:** Ink `#0A0A0A`, cream `#F5EFE0`, warm gold `#C9A961` (or a real metallic gold gradient). Optional jewel accent (jade `#0F5940`, sapphire `#1B2E62`).
+**Layout:** Symmetrical, stepped/tiered compositions, sunburst radials, chevron dividers, tall vertical proportions. Centered or mirrored, never off-kilter.
+**Motion:** Slow, deliberate reveals, gold shimmer sweeps, elevator-doors symmetry.
+**Signature move:** A stepped/tiered header with a sunburst radial or chevron rule in metallic gold.
+**Imagery:** Cassandre-style stylized illustration over photo when possible, geometric silhouettes, ocean-liner scale. If photo, sepia-warm grade inside a stepped-arch frame.
+**Voice:** Elevated, ceremonial, restrained flourish. Full sentences with cadence, no exclamation. Ex: "The considered pursuit of what lasts." · CTA "Reserve."
+
+## 19. frutiger-aero
+**References:** Windows Vista/7 wallpapers, iOS 4-6 skeuomorphism, mid-2000s Sony/Nokia UI, "Aqua" era Apple, GarageBand, corporate stock photography circa 2005-2013.
+**Feel:** Optimistic mid-2000s consumer tech. Glossy, translucent, cloud-and-grass energy. Aggressively pre-recession.
+**Type:** Segoe UI or SF Pro Rounded. `free:` Nunito, Rubik, or M PLUS Rounded 1c. Rounded, friendly, medium weight, comfortable body.
+**Color:** Sky blue `#4FB2F5` gradients, aqua `#00E1FF`, glossy white specular highlights, meadow green accents. Soft radial glows and blue-tinted drop shadows on everything.
+**Layout:** Rounded translucent glass panels over bright wallpaper backgrounds, reflective surfaces, floating orbs and bubbles, generous padding, buttons that look pressable.
+**Motion:** Bouncy elastic springs, genie-effect transitions, gentle floating idle animations.
+**Signature move:** Aqua-glass rounded panels with a bright specular highlight, floating over a blue-sky gradient with soft bokeh.
+**Imagery:** Sky/nature stock (grass, water droplets, clouds, bubbles) as backgrounds. Product renders on white with a reflection floor. Nothing gritty, nothing textured. Bloom and lens flare permitted.
+**Voice:** Bright, friendly, aspirational, mid-2000s tech optimism. Ex: "Everything you love, in the cloud." · CTA "Get started free."
+
+## 20. mid-century-modernist
+**References:** Paul Rand, Alvin Lustig, Saul Bass title sequences, Charley Harper, Alexander Girard, Herman Miller print ads, Push Pin Studios.
+**Feel:** Optimistic postwar American modernism. Playful geometry, hand-cut shapes, custom lettering, human warmth inside a modern frame.
+**Type:** A friendly geometric sans paired with a lively serif or a hand-drawn display, `free:` Fraunces (serif) with DM Sans (sans). Occasional custom cut-paper letterforms in illustration.
+**Color:** Warm cream `#F1E9D2`, brick red `#C13B2E`, teal `#3A7D7C`, mustard `#D9A441`, ink `#2A2A2A`. All present together, all flat, all warm.
+**Layout:** Off-center compositions, hand-cut geometric illustration (birds, sun, figures, plants) as anchor, generous negative space, playful asymmetry.
+**Motion:** Charming and character-driven. A shape hops, a bird blinks, a sun spins slowly. No physics-heavy springs.
+**Signature move:** A large cut-paper geometric illustration built from 3-5 flat shapes (a bird, a sun, a face), sitting off-center against generous cream.
+**Imagery:** Flat cut-paper illustration in the palette, animals, figures, plants built from a handful of shapes. Never gradients, never soft. If photo, sits inside a cut-paper frame.
+**Voice:** Warm, witty, considered, mid-century magazine copy. A little charmed with itself, never precious. Ex: "Good things, made honestly, for people who notice." · CTA "See our work."
+
+## 21. cranbrook-deconstructed
+**References:** Emigre magazine, David Carson (Ray Gun, Beach Culture), Cranbrook Academy of Art (Katherine McCoy), April Greiman, Neville Brody, early Wired print, Rudy VanderLans.
+**Feel:** Post-Swiss revolt. Broken grids, collided type, deliberate difficulty. Reading is a design act.
+**Type:** Multiple faces layered on purpose. A rough serif or Bodoni (`free:` Rozha One, Bodoni Moda) against a display sans (`free:` Anton, Bungee) and a mono. Extreme scale contrast, overlapping.
+**Color:** Newsprint off-white base, black ink, one aggressive spot color (magenta, cyan, or acid green). Halftone dots and photocopy artifacts as texture.
+**Layout:** Broken grid, overlapping type layers, text at angles, columns that collide, whitespace weaponized, spreads that refuse to align.
+**Motion:** Jittery, offset, cursor-driven glitches, text that repositions on hover.
+**Signature move:** Huge display type layered with a smaller type block set at a different angle, a photocopy-halftone photo behind both.
+**Imagery:** Photocopy-degraded, high-contrast halftone, doubled or tripled with color-offset registration errors. Type overlaid on top. Never clean.
+**Voice:** Argumentative, essayistic, self-aware, unafraid of a fragmented sentence. Punctuation as design. Ex: "Legibility. Optional." · CTA "Read on."
+
+## 22. ukiyo-e-woodblock
+**References:** Hokusai, Hiroshige, Utamaro, Sharaku, Edo-period Japanese woodblock prints, contemporary Japanese design that leans on the tradition.
+**Feel:** Flat picture plane, ink outlines, calm palette. The stillness of Edo prints translated to screen.
+**Type:** A humanist serif with faint brush quality for headlines, `free:` Shippori Mincho, Noto Serif JP, or Cormorant Garamond. Vertical text used sparingly where meaningful.
+**Color:** Indigo `#1F3A5F`, aged cream `#EFE6D2`, vermilion `#C33C34`, moss `#6B7A44`, ink `#1A1A1A`. Never modern-bright.
+**Layout:** Flat picture plane (no perspective depth), strong horizontal bands, off-center focal point, large single-color fields, red chop-mark seal in a corner.
+**Motion:** Almost none. A slow ink-bleed reveal, a gentle wave, a wind through grass. Nothing modern.
+**Signature move:** A flat woodblock-illustrated scene, ink-outlined focal figure, a large color field behind, a red chop-mark seal in the corner.
+**Imagery:** Woodblock-style illustration, flat colors, black ink outlines, no shading, no perspective. If photo, posterize to 3-4 flat colors and add ink outlines.
+**Voice:** Quiet, observational, sensory, one image per sentence. Ex: "A wave. A boat. A morning worth remembering." · CTA "See the collection."
+
+## 23. zine-cutup
+**References:** Punk zines (Sniffin' Glue, Maximum Rocknroll), Riot Grrrl zines, Raymond Pettibon, Xerox art, ransom-note typography, DIY 80s/90s counterculture, Winston Smith collage.
+**Feel:** Xeroxed, hand-cut, unapologetically messy. Made at a copy shop at 2am.
+**Type:** Mixed on purpose. Typewritten body (`free:` Special Elite / Courier Prime), ransom-note headlines cut from multiple faces at different sizes, handwritten scrawl allowed.
+**Color:** Xerox black on newsprint white, one spot splash (highlighter yellow, red marker, blue ballpoint). Everything looks toner-degraded and re-copied.
+**Layout:** Cut-and-paste with visible tape edges and torn strips, elements tilted at random, columns colliding, marker-drawn arrows and circles.
+**Motion:** Jittery, hand-shot on VHS. Elements paper-flip or wobble, no smooth easing.
+**Signature move:** A headline built from cut-out letters (ransom-note) taped over a photocopied photograph.
+**Imagery:** Photocopied-then-re-photocopied photos, high-contrast Xerox grain, cut out and taped down with visible tape. Marker scribbles across them.
+**Voice:** Confrontational, first-person, angry or gleeful, unfiltered. Zine editorial register. Ex: "We made this because nobody else would." · CTA "Grab issue #4."
+
+## 24. wabi-japanese-modernist
+**References:** MUJI, Kenya Hara, Naoto Fukasawa, Sori Yanagi, Nakagawa Mokkougei, contemporary Japanese craft photography, IDÉE Tokyo.
+**Feel:** Wabi-sabi restraint meets modernist discipline. Emptiness as luxury, natural materials, silence as design.
+**Type:** A neutral sans set light and quiet, `free:` Manrope Light or Inter tightened, paired with a Mincho serif for headings (`free:` Shippori Mincho, Noto Serif JP).
+**Color:** Unbleached paper `#F0EBE1`, soft charcoal `#3A3A3A`, one earthen accent (kinari beige `#D8CDB8`, hemp green `#8A9271`, aged terracotta `#B26F5C`). No pure white or black.
+**Layout:** Enormous negative space, one object per screen, tiny labels, everything considered, off-center placement following ma (the interval between things).
+**Motion:** Nearly still. A whisper of a fade, a slow product rotation.
+**Signature move:** A single centered object photograph on unbleached paper with a tiny label set to the side in both Latin and Japanese-friendly typography.
+**Imagery:** Single-object studio photography on unbleached paper, natural directional light, unpolished materials (cedar, linen, hemp, unglazed ceramic). Restrained, always breathable.
+**Voice:** Quiet, precise, sensory, present-tense, honest about material. Ex: "Cedar. Sanded once. Signed on the underside." · CTA "See the piece."
+
+## 25. comic-pop
+**References:** Roy Lichtenstein, Andy Warhol prints, Silver Age comic panels (Kirby, Ditko), Ben-day dot printing, 1960s pop-art posters.
+**Feel:** Comic panel translated to screen. Bold ink outlines, primary color fields, halftone dot fields, speech-bubble energy.
+**Type:** Bold comic-book sans and ink-outlined display type. `free:` Bangers or Bungee for shouty display, Anton for headlines, plain sans for body. Comic Neue only inside dialog callouts.
+**Color:** Primary red `#E1352C`, primary yellow `#FFD400`, primary blue `#1E5AA8`, black ink, white paper. Ben-day dot fields as texture.
+**Layout:** Panel grid with hard black gutters, speech bubbles and thought clouds as callouts, radial "POW"/"BAM" starbursts for emphasis, action-line convergence.
+**Motion:** Snap-to-frame reveal, panels flash in one by one, starburst pops on click.
+**Signature move:** A Ben-day dot field behind an ink-outlined headline, with a radial starburst callout wrapping the CTA.
+**Imagery:** Flat comic illustration with hard black ink outlines and primary-color fills, halftone shading. If photo, posterize to 3 flat tones and screen with dots.
+**Voice:** Punchy, exclamatory, comic-panel dialog. Onomatopoeia allowed. Ex: "WHAM! Every feature you asked for." · CTA "POW!"
+
+## 26. vaporwave-synthwave
+**References:** Miami Vice title cards, Outrun / Kavinsky, Stranger Things titles, Retrowave album art, Blade Runner but pink, VHS tracking bars, Poolsuite FM.
+**Feel:** 80s retro-future. Neon perspective grids receding to a chrome sun on a horizon that never ends.
+**Type:** Chrome-outlined or geometric sans set uppercase with extreme letter-spacing, `free:` Monoton, Audiowide, Righteous. Occasional katakana as decoration.
+**Color:** Hot pink `#FF3D9A`, cyan `#00E1FF`, deep purple `#2A0F5F`, chrome silver gradient, sunset orange `#FF6B35`. High saturation, glow via drop-shadow.
+**Layout:** Perspective grid to a horizon vanishing point, chrome-outlined type at scale, palm-tree silhouettes, VHS tracking lines and RGB chromatic-aberration bars.
+**Motion:** Grid scrolls toward horizon, chrome shimmer sweeps, VHS glitch stutter, slow zoom in.
+**Signature move:** A chrome-outlined uppercase headline over a pink-cyan perspective grid with a setting sun rising through it.
+**Imagery:** Palm trees, chrome busts, marble statues, retro sports cars, sunset horizons, all with pink/cyan gradient overlays and VHS-scanline treatment. Katakana labels optional.
+**Voice:** Nostalgic-futurist, all-caps flair, drama without irony. Ex: "TONIGHT WE RIDE." · CTA "ENTER."
+
+## 27. manga-anime
+**References:** Katsuhiro Otomo (Akira), Naoki Urasawa, shonen manga (Dragon Ball, One Piece), screentone patterns, speed-line panels, contemporary anime title cards.
+**Feel:** Ink and screentone. Speed lines, dramatic angles, panel bleeds, black weight everywhere.
+**Type:** A high-contrast display sans for exclamation, mixed with brush-drawn accents. `free:` Anton or Bebas Neue for shouty display, Shippori Mincho or Noto Serif JP for Japanese-friendly headings. Katakana or hiragana decoration allowed.
+**Color:** Ink `#0A0A0A`, paper `#EFEBE0`, one blood-splash color (arterial red `#C1272D` or shonen orange `#FF7B00`). Screentone dot patterns for shading.
+**Layout:** Angular panel gutters (not orthogonal), dramatic bleed panels, speed-line convergence, tilted camera angles, focus lines converging on the CTA.
+**Motion:** Snap zoom, speed-line sweeps, ink-splash reveal.
+**Signature move:** Radiating speed lines converging on the headline, screentone dot field shading a bleed panel behind it.
+**Imagery:** Ink illustration with screentone shading and heavy black spot, dramatic low angles, panel bleeds. If photo, convert to high-contrast ink with dot-screen midtones and add speed lines.
+**Voice:** Dramatic, terse, high-stakes. Katakana onomatopoeia allowed. Ex: "The next move decides everything." · CTA "Begin the fight."
+
+## 28. broadsheet-newspaper
+**References:** The New York Times print edition, The Financial Times (salmon paper), Le Monde, The Wall Street Journal, broadsheet front pages, wire-service layout.
+**Feel:** Serious news typography. Dense columns of information, hierarchy through type not decoration.
+**Type:** A classic newspaper serif for headlines and body, `free:` Old Standard TT, PT Serif, or Source Serif Pro. Small caps for section labels, oldstyle numerals for tables.
+**Color:** Newsprint `#F4EFE4` (or FT salmon `#F5E5D0` if editorial-financial), ink `#161514`, one masthead red for section flags. Grey hairline rules.
+**Layout:** Dense 5-6 column grid, hairline column rules, hanging-indent bylines, ALL-CAPS section flags, drop initials, kicker + headline + deck stack, jump-continues.
+**Motion:** None, or a slow scroll-linked column reveal. This is print imitation, motion isn't the point.
+**Signature move:** A five-column news grid with a masthead-red section flag, drop cap, and a full ALL-CAPS deck under the headline.
+**Imagery:** Small halftone-treated news photos with a byline caption in tiny serif italic. Info-graphic charts in ink and one accent color, never dashboards. Photo-forward but tightly captioned.
+**Voice:** Newsroom register. Lede, nut graf, precise attribution. No first-person. Ex: "The rate cut, and what it means for renters." · CTA "Read the story."
+
+## 29. botanical-plate
+**References:** Ernst Haeckel's Kunstformen der Natur, Maria Sibylla Merian, Kew and RHS botanical field guides, 19th-century natural-history plates, Audubon's Birds of America.
+**Feel:** Scientific illustration plate. Ink line-art of specimens on aged cream, dense annotation, encyclopedic calm.
+**Type:** A humanist serif for headings (`free:` Cormorant Garamond, Lora), italic Latin binomials, a delicate copperplate script for a single captioned flourish (`free:` Great Vibes, used sparingly).
+**Color:** Aged paper `#EDE4D0`, ink `#2A1F1A`, one botanical accent (specimen green `#4A6B3A`, aged rose `#B87368`, ochre `#B08F3E`). Muted and aged, never saturated.
+**Layout:** Specimen-centered composition, hand-drawn leader-line labels pointing to parts, italic binomial captions, plate number in the corner, decorative border rules.
+**Motion:** Fades like turning an old page. A specimen rotates slowly. Nothing digital-feeling.
+**Signature move:** A centered ink line-drawing specimen with plate number, Latin binomial caption, and leader-line labels annotating each part.
+**Imagery:** Ink line-drawing of specimens (plants, animals, minerals) with fine crosshatching, watercolor wash allowed. If photo, convert to ink line-art or set inside a plate frame with a binomial caption.
+**Voice:** Naturalist's field-note register. Latin binomials, precise observation, present-tense. Ex: "Rosa gallica. Blooms once, in June. Fragrant." · CTA "Add to plate."
+
+## 30. crypto-defi
+**References:** Uniswap (unicorn era), Rainbow wallet, Zora, Farcaster/Warpcast, Blur, Friend.tech, memecoin project sites, on-chain "gm" culture.
+**Feel:** Playful, chaotic, on-chain native. Gradient stickers, animated mascots, meme-fluent, unserious on purpose.
+**Type:** A rounded playful sans or chunky display, `free:` Grandstander, Fredoka, Space Grotesk Bold. Mono for wallet addresses and token amounts.
+**Color:** Candy pastels on off-white (mint `#7DF9FF`, bubblegum `#FF88C2`, lavender `#B69FFC`, sunny yellow `#FFEB6B`), or on deep dark `#0B0817`. Gradients allowed here as bold candy fields, never lavender wash.
+**Layout:** Chunky rounded cards (20-28px radius), floating mascot illustration, animated stickers, ticker tapes scrolling, wallet-connect button prominently placed, big number counters.
+**Motion:** Bouncy springs, mascot idle wiggle, ticker-tape scroll, gradient shimmer on hover, confetti on success.
+**Signature move:** A big rounded gradient card with a floating mascot character and a wallet-connect button labeled "gm."
+**Imagery:** Mascot/character illustration (chunky, rounded, animated), gradient stickers, meme-style cutouts. No stock photography. Pixel-art PFP avatars optional.
+**Voice:** Lowercase, meme-fluent, gently unserious. On-chain slang OK. Ex: "gm. wanna trade a token nobody's heard of?" · CTA "connect wallet."
+
+## 31. art-nouveau
+**References:** Alphonse Mucha posters, Gustav Klimt, Aubrey Beardsley, Hector Guimard (Paris Métro entrances), Tiffany stained glass, La Belle Époque posters.
+**Feel:** Organic curves, floral tendrils, flowing hair. Nature and femininity rendered as ornament. The exact opposite of Art Deco's geometry.
+**Type:** A curvilinear or flourished display face, `free:` Berkshire Swash, Cinzel Decorative, or Cormorant Garamond used with ornamental capitals. Open counters and small caps for secondary.
+**Color:** Antique cream `#F1E8D0`, sage green `#8AA07E`, dusty rose `#D0A5A1`, aged gold `#B08D4C`, indigo `#293E5B`. Muted jewel tones, never bright.
+**Layout:** Sinuous curved borders, arched frame headers, flowing floral tendrils weaving through the composition, symmetrical vertical proportions.
+**Motion:** Slow, undulating tendril reveal, gentle sway, watercolor bloom fade-ins.
+**Signature move:** An arched header framed by hand-drawn floral tendrils, with a Mucha-style illustrated figure anchoring one side.
+**Imagery:** Mucha-style illustrated figures with flowing hair and floral surrounds, stained-glass panels, Klimt gold-leaf patterning. If photo, sepia-warm and inside an ornamental curved frame.
+**Voice:** Romantic, sensory, lyrical. Ex: "A flourish, in every quiet corner." · CTA "Enter the garden."
+
+## 32. pixel-8bit
+**References:** NES/SNES sprite art (Zelda, Chrono Trigger, Metroid), Game Boy palettes (DMG green), Pico-8 fantasy console, indie pixel games (Celeste, Hyper Light Drifter), EGA/CGA 16-color.
+**Feel:** 8/16-bit sprite art rendered pixel-perfect. Games from before textures, when everything was two colors and a squint.
+**Type:** True bitmap pixel fonts, `free:` Pixelify Sans, VT323, Silkscreen, or Press Start 2P for accents. Body still uses a pixel body face, no anti-aliasing anywhere.
+**Color:** A committed limited palette (Game Boy DMG `#0F380F #306230 #8BAC0F #9BBC0F`, or an NES palette, or a Pico-8 palette). Never more than 8 colors.
+**Layout:** Everything aligned to pixel units (multiples of 4 or 8), sprite tiles as icons, pixel-perfect dialog boxes with hard borders, status bars along the top.
+**Motion:** Frame-by-frame sprite animation, no easing, no interpolation. Idle bob at 2fps.
+**Signature move:** A sprite character or item tile with a pixel-perfect dialog box below it, all rendered `image-rendering: pixelated`.
+**Imagery:** Original pixel-art sprites, tilemaps, or bitmap portraits in the palette. If photo, dither to the palette at 2-4px pixel size (Bayer or Floyd-Steinberg).
+**Voice:** Game-dialog register. Terse, in-world, ALL-CAPS status lines. Ex: "YOU FOUND A SECRET." · CTA "PRESS START."
+
 ---
 
 ## Picking notes
 
-- **Selection is seed-by-default** (see SKILL.md). Roll a number 1-16, commit to it, don't reroll toward something safer. Fit-selection is the *override* for projects that genuinely demand a specific look.
+- **Selection is seed-by-default** (see SKILL.md). Roll a number 1-32, commit to it, don't reroll toward something safer. Fit-selection is the *override* for projects that genuinely demand a specific look.
 - A card can be dialed down for a serious product (a restrained `swiss-international` or `utilitarian-dense`) without becoming generic. It still has a point of view.
 - **Voice follows the card, not your reflexes.** Write the copy in the card's voice before reaching for the usual SaaS phrasing. The copy ban-list in SKILL.md is the tonal equivalent of the visual ban-list.
 - You may borrow *one* element from a second card as an accent (e.g. `utilitarian-dense` with a `terminal-mono` log panel). Never split the whole UI 50/50.
-- Card indices are stable (1-16 above) so a rotating counter always maps to the same card.
+- Card indices are stable (1-32 above) so a rotating counter always maps to the same card.

@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Art Direction · a field guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600&family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDE4D0;
+  --paper-warm: #E3D8C0;
+  --ink: #2A1F1A;
+  --ink-soft: rgba(42, 31, 26, 0.72);
+  --ink-fade: rgba(42, 31, 26, 0.45);
+  --specimen-green: #4A6B3A;
+  --aged-rose: #B87368;
+  --ochre: #B08F3E;
+  --hair: rgba(42, 31, 26, 0.32);
+  --tape: #D9C88A;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 1200px;
+  height: 630px;
+  overflow: hidden;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Manrope', -apple-system, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 300;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.11  0 0 0 0 0.06  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  z-index: 50;
+}
+
+h1, h2, .display, .headline { text-wrap: balance; }
+p, .lede { text-wrap: pretty; }
+
+.plate {
+  width: 1200px;
+  height: 630px;
+  padding: 60px 80px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Botanical border rules */
+.plate::after {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  border: 1px solid var(--hair);
+  pointer-events: none;
+}
+
+.plate::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  border: 1px solid var(--hair);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* -- LEFT: title + naturalist copy -- */
+.left { padding-top: 20px; position: relative; z-index: 10; }
+
+.eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--specimen-green);
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.eyebrow .plate-no {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--ink-fade);
+  font-weight: 500;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 96px;
+  line-height: 0.92;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.title .amp {
+  font-style: italic;
+  color: var(--aged-rose);
+  font-weight: 400;
+}
+
+.binomial {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink-soft);
+  font-weight: 400;
+  margin-bottom: 28px;
+  letter-spacing: 0.01em;
+}
+
+.binomial .abbr { font-style: normal; color: var(--ink-fade); margin-left: 6px; }
+
+.tagline {
+  font-family: 'Manrope', sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 460px;
+  font-weight: 400;
+  margin-bottom: 28px;
+}
+
+.tagline em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--specimen-green);
+  font-weight: 500;
+}
+
+.field-notes {
+  border-top: 1px solid var(--hair);
+  padding-top: 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 440px;
+  margin-bottom: 20px;
+}
+
+.stat-row {
+  display: flex;
+  gap: 28px;
+  border-top: 1px solid var(--hair);
+  padding-top: 16px;
+}
+
+.stat {
+  font-family: 'Manrope', sans-serif;
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-fade);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* -- RIGHT: specimen with leader-line annotations -- */
+.right {
+  position: relative;
+  height: 490px;
+  z-index: 10;
+}
+
+.specimen-svg { width: 100%; height: 100%; display: block; }
+
+/* -- Ransom-note accent (bottom left) -- */
+.ransom {
+  position: absolute;
+  bottom: 42px;
+  left: 90px;
+  transform: rotate(-2.4deg);
+  z-index: 20;
+  padding: 8px 12px 6px;
+  background: #F5EEDA;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.16),
+    inset 0 0 0 1px rgba(42,31,26,0.15);
+  font-family: 'Special Elite', 'Courier Prime', monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  max-width: 340px;
+  gap: 3px 5px;
+}
+
+.ransom::before, .ransom::after {
+  content: '';
+  position: absolute;
+  width: 46px;
+  height: 12px;
+  background: var(--tape);
+  opacity: 0.9;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.ransom::before { top: -6px; left: -10px; transform: rotate(-8deg); }
+.ransom::after { top: -4px; right: -8px; transform: rotate(6deg); }
+
+.ransom .r-letter {
+  display: inline-block;
+  padding: 1px 3px;
+  background: #E8DFC7;
+  border: 1px solid rgba(42,31,26,0.4);
+  transform: translateY(0);
+  line-height: 1;
+}
+.ransom .r-letter:nth-child(2n) { transform: rotate(-3deg); background: #F0E6CE; }
+.ransom .r-letter:nth-child(3n) { transform: rotate(2deg); font-family: 'Cormorant Garamond', serif; font-size: 14px; padding: 0 3px; }
+.ransom .r-letter:nth-child(5n) { transform: rotate(-1deg); background: #E0D3B5; }
+.ransom .r-letter:nth-child(7n) { transform: rotate(4deg); font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 11px; }
+
+.ransom .r-space { width: 6px; display: inline-block; }
+</style>
+</head>
+<body>
+<div class="plate">
+
+  <!-- LEFT: title, binomial, tagline, stats -->
+  <div class="left">
+    <div class="eyebrow">
+      A field guide
+      <span class="plate-no">Plate IV · Ed. 2026</span>
+    </div>
+    <h1 class="title">Art<br>Direction<span class="amp">.</span></h1>
+    <div class="binomial">Directio artis anti&#8203;mediana<span class="abbr">Rob G., 2026</span></div>
+    <p class="tagline">A skill that stops AI-generated UI from all looking the same. Thirty-two committed directions, none of them <em>clean modern SaaS</em>.</p>
+    <p class="field-notes">"Every quality adjective — clean, modern, sleek, minimal — resolves to the same point. That point is the mean of the training data. We aim somewhere else."</p>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">32</div>
+        <div class="stat-label">Base cards</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">9,504</div>
+        <div class="stat-label">Concrete briefs</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Purple gradients</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: specimen with leader-line annotations -->
+  <div class="right">
+    <svg class="specimen-svg" viewBox="0 0 500 490" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Ink-drawn specimen: a stylized capital A with botanical descenders -->
+      <g id="specimen" transform="translate(250 265)">
+        <!-- Central A, botanical style -->
+        <g stroke="#2A1F1A" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <!-- A strokes -->
+          <path d="M -90 130 L 0 -160 L 90 130" stroke-width="2.4"/>
+          <path d="M -46 22 L 46 22" stroke-width="2"/>
+          <!-- fine hatching on left leg -->
+          <path d="M -84 118 L -70 112 M -78 100 L -64 94 M -72 82 L -58 76 M -66 64 L -52 58 M -60 46 L -46 40 M -54 28 L -40 22 M -48 10 L -34 4 M -42 -8 L -28 -14 M -36 -26 L -22 -32 M -30 -44 L -16 -50 M -24 -62 L -10 -68 M -18 -80 L -4 -86 M -12 -98 L 2 -104 M -6 -116 L 8 -122" stroke-width="0.55" opacity="0.75"/>
+          <!-- serif base flourishes -->
+          <path d="M -105 132 Q -95 138, -85 130 M 85 130 Q 95 138, 105 132" stroke-width="1.8"/>
+          <!-- top serif -->
+          <path d="M -6 -164 Q 0 -170, 6 -164" stroke-width="1.8"/>
+        </g>
+
+        <!-- Botanical accents: leaves emerging from base -->
+        <g fill="#4A6B3A" stroke="#2A1F1A" stroke-width="1" stroke-linejoin="round" opacity="0.92">
+          <!-- left leaf -->
+          <path d="M -110 132 Q -140 122, -158 130 Q -140 138, -110 132 Z"/>
+          <path d="M -118 130 Q -145 110, -170 108 Q -152 130, -118 130 Z"/>
+          <!-- right leaf -->
+          <path d="M 110 132 Q 140 122, 158 130 Q 140 138, 110 132 Z"/>
+          <path d="M 118 130 Q 145 110, 170 108 Q 152 130, 118 130 Z"/>
+        </g>
+
+        <!-- Roots (fine ink lines) -->
+        <g stroke="#2A1F1A" fill="none" stroke-width="0.8" stroke-linecap="round" opacity="0.7">
+          <path d="M -50 135 Q -60 155, -75 168 Q -85 175, -95 178"/>
+          <path d="M -20 138 Q -25 160, -30 178 Q -34 190, -38 200"/>
+          <path d="M 20 138 Q 24 160, 28 178 Q 32 190, 35 200"/>
+          <path d="M 50 135 Q 60 155, 75 168 Q 85 175, 95 178"/>
+          <path d="M 0 138 L 0 200"/>
+        </g>
+
+        <!-- Fruiting body / seed pod -->
+        <g fill="#B87368" stroke="#2A1F1A" stroke-width="1" opacity="0.9">
+          <circle cx="-92" cy="82" r="6"/>
+          <circle cx="88" cy="60" r="5"/>
+          <circle cx="70" cy="-20" r="4"/>
+        </g>
+        <g fill="#B08F3E" stroke="#2A1F1A" stroke-width="0.8" opacity="0.85">
+          <circle cx="-70" cy="-10" r="3.5"/>
+          <circle cx="-100" cy="40" r="3"/>
+        </g>
+      </g>
+
+      <!-- Leader-line annotations -->
+      <g stroke="#2A1F1A" stroke-width="0.6" fill="none" opacity="0.6">
+        <!-- top-left leader -->
+        <path d="M 190 90 L 100 90 L 90 110"/>
+        <!-- top-right leader -->
+        <path d="M 320 88 L 420 88 L 430 68"/>
+        <!-- mid-left leader -->
+        <path d="M 172 210 L 60 210"/>
+        <!-- mid-right leader -->
+        <path d="M 330 220 L 458 220 L 468 232"/>
+        <!-- bottom-left leader (roots) -->
+        <path d="M 190 400 L 76 400"/>
+        <!-- bottom-right leader (leaf) -->
+        <path d="M 328 380 L 440 380 L 452 356"/>
+      </g>
+
+      <!-- Annotation dots -->
+      <g fill="#2A1F1A">
+        <circle cx="190" cy="90" r="1.7"/>
+        <circle cx="320" cy="88" r="1.7"/>
+        <circle cx="172" cy="210" r="1.7"/>
+        <circle cx="330" cy="220" r="1.7"/>
+        <circle cx="190" cy="400" r="1.7"/>
+        <circle cx="328" cy="380" r="1.7"/>
+      </g>
+
+      <!-- Annotation labels -->
+      <g font-family="Cormorant Garamond, Georgia, serif" font-style="italic" fill="#2A1F1A">
+        <!-- top-left: type -->
+        <text x="12" y="106" font-size="15" font-weight="500">a. named typeface</text>
+        <text x="12" y="122" font-size="11" font-style="normal" font-family="Manrope, sans-serif" fill="#8B7A66" letter-spacing="0.05em">not Inter by accident</text>
+
+        <!-- top-right: color -->
+        <text x="380" y="64" font-size="15" font-weight="500" text-anchor="start">b. palette</text>
+        <text x="380" y="80" font-size="11" font-style="normal" font-family="Manrope, sans-serif" fill="#8B7A66" letter-spacing="0.05em">no purple wash</text>
+
+        <!-- mid-left: signature move -->
+        <text x="12" y="214" font-size="15" font-weight="500">c. signature move</text>
+        <text x="12" y="230" font-size="11" font-style="normal" font-family="Manrope, sans-serif" fill="#8B7A66" letter-spacing="0.05em">the one unmistakable thing</text>
+
+        <!-- mid-right: voice -->
+        <text x="410" y="228" font-size="15" font-weight="500" text-anchor="start">d. voice</text>
+        <text x="410" y="244" font-size="11" font-style="normal" font-family="Manrope, sans-serif" fill="#8B7A66" letter-spacing="0.05em">art direction, in words</text>
+
+        <!-- bottom-left: modifier -->
+        <text x="12" y="404" font-size="15" font-weight="500">e. modifier (mode / scale / accent)</text>
+        <text x="12" y="420" font-size="11" font-style="normal" font-family="Manrope, sans-serif" fill="#8B7A66" letter-spacing="0.05em">9,504 concrete briefs</text>
+
+        <!-- bottom-right: hero discipline -->
+        <text x="380" y="352" font-size="15" font-weight="500" text-anchor="start">f. hero discipline</text>
+        <text x="380" y="368" font-size="11" font-style="normal" font-family="Manrope, sans-serif" fill="#8B7A66" letter-spacing="0.05em">load-bearing, not decorative</text>
+      </g>
+
+      <!-- Plate number (bottom-right corner) -->
+      <g font-family="Cormorant Garamond, Georgia, serif">
+        <text x="490" y="470" font-size="11" font-style="italic" fill="#8B7A66" text-anchor="end" letter-spacing="0.08em">Fig. IV · A field guide to distinctive direction</text>
+      </g>
+
+      <!-- Compass mark, upper right -->
+      <g transform="translate(468 32)" stroke="#2A1F1A" fill="none" stroke-width="0.7">
+        <circle r="12"/>
+        <line x1="0" y1="-10" x2="0" y2="10"/>
+        <line x1="-10" y1="0" x2="10" y2="0"/>
+        <text font-family="Cormorant Garamond, serif" font-style="italic" font-size="9" fill="#2A1F1A" y="-16" text-anchor="middle">N</text>
+      </g>
+    </svg>
+
+    <!-- Zine-cutup accent: ransom-note strip -->
+    <div class="ransom">
+      <span class="r-letter">N</span><span class="r-letter">O</span><span class="r-letter">T</span><span class="r-space"></span><span class="r-letter">A</span><span class="r-letter">N</span><span class="r-letter">O</span><span class="r-letter">T</span><span class="r-letter">H</span><span class="r-letter">E</span><span class="r-letter">R</span><span class="r-space"></span><span class="r-letter">P</span><span class="r-letter">U</span><span class="r-letter">R</span><span class="r-letter">P</span><span class="r-letter">L</span><span class="r-letter">E</span><span class="r-space"></span><span class="r-letter">G</span><span class="r-letter">R</span><span class="r-letter">A</span><span class="r-letter">D</span><span class="r-letter">I</span><span class="r-letter">E</span><span class="r-letter">N</span><span class="r-letter">T</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

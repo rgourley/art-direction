@@ -47,6 +47,22 @@ document.fonts.check("16px 'DM Serif Display'")   // → true if actually loaded
 ```
 If false, the face didn't load and you're looking at the fallback. Fix the link or self-host.
 
+### Kill orphans: one word alone on a line is a tell
+
+An orphaned last word makes any editorial or display card read like an unfinished blog draft. Fix it with CSS, not by rewriting the copy each time:
+
+```css
+/* Display headlines and short heads — prefer balanced line-lengths */
+h1, h2, .display-xl, .display, .h2 { text-wrap: balance; }
+
+/* Body prose — pull a stranded word back onto the previous line */
+p, .lede, .caption, blockquote { text-wrap: pretty; }
+```
+
+`text-wrap: balance` and `text-wrap: pretty` are supported in modern Chrome, Safari, and Firefox; older browsers ignore them (harmless). For long paragraphs where `balance` is a perf hit, use `pretty` instead. If a specific two-word phrase must stay together (a name, a brand, "New York"), use `&nbsp;` between them.
+
+Skipping this step is one of the loudest AI-look tells in serif-heavy cards (editorial-magazine, gallery-monochrome, art-deco, botanical-plate, broadsheet-newspaper, art-nouveau, mid-century-modernist, wabi-japanese-modernist).
+
 ---
 
 ## 2. Imagery: placeholders for prototype, real art for ship

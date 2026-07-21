@@ -2,27 +2,37 @@
 
 A Claude Code skill that stops AI-generated UI from all looking the same.
 
+![art-direction promo — a botanical-plate specimen of the skill itself, ransom-note accent, rolled from brief 29.1.3.23](assets/promo.png)
+
 Every quality adjective (clean, modern, sleek, minimal, professional) resolves to the same point: the mean of the training data. That mean is the AI look: Inter/Geist, a purple-to-blue gradient, glassmorphism, `rounded-2xl` + `shadow-2xl` cards, a centered hero over three feature cards, emoji as icons. You cannot describe your way out of it with more quality words, because they all aim at the same center.
 
 This skill aims somewhere else, on purpose.
+
+The image above was designed by the skill on itself — random-rolled to `botanical-plate` (base 29), body-first, with a `zine-cutup` accent. No fit-selection, no reroll. That's the anti-sameness thesis working end-to-end.
 
 ## How it works
 
 Three levers move away from the mean, and the skill pulls all three before any code is written:
 
-1. **Named references beat adjectives.** "Looks like Teenage Engineering" carries a thousand concrete decisions the model already knows. "Clean and modern" carries zero. The deck is 16 committed directions, each anchored to real products and design traditions.
+1. **Named references beat adjectives.** "Looks like Teenage Engineering" carries a thousand concrete decisions the model already knows. "Clean and modern" carries zero. The deck is 32 committed directions, each anchored to real products and design traditions.
 2. **Ban-lists cut off the default path.** A visual ban-list (no purple gradient, no glassmorphism, no `rounded-2xl` reflex) and a copy ban-list (no "supercharge / seamlessly / the future of X"). Negative constraints do work positive ones can't.
 3. **Commit to one coherent system up front.** Type, color, grid, motion, imagery treatment, and voice are all decided before the first component. Assembling defaults component-by-component is how the generic look creeps back in.
 
-**Selection is seed-by-default.** The skill rolls `RANDOM % 16` and commits, because fit-selection quietly drifts toward the safe, obvious pick and successive projects converge again. A random seed can't rationalize toward safe, and it forces divergence over time, which is the whole point. Fit-selection stays available as an explicit override for projects that genuinely demand a specific look.
+**Selection is seed-by-default.** The skill rolls a full brief and presents it as a recommendation, because fit-selection quietly drifts toward the safe, obvious pick and successive projects converge again. A random brief can't rationalize toward safe, and it forces divergence over time, which is the whole point. Fit-selection stays available as an explicit override for projects that genuinely demand a specific look.
+
+Each brief is a base card (1 of 32) plus three modifiers on top: **mode** (default / dark / inverted), **scale** (display-first / balanced / body-first), and **accent** (none, or one signature move borrowed from a second card). That's **9,504 concrete briefs**, each still anchored to a real design tradition. The base card wins every conflict — modifiers dial specific slots, they don't blend cards.
+
+**The recommendation gate.** The skill doesn't just roll and build — it rolls, presents the brief to you in text with a short rationale, and asks whether to build it or design 2 alternatives out for comparison. Accept and Claude builds. Ask for alternatives and Claude rolls 2 more and produces all 3 as real side-by-side mockups so you can pick one. Hard cap at 3, no fourth roll, no blending of the picks — that's how the anti-fit-selection thesis stays intact while still giving you director control.
 
 Every card art-directs the words too. A risograph zine and a blueprint infra tool must not share a voice, so each direction carries a tone spec, not just a palette.
 
+**Hero discipline.** Heros are load-bearing in a way body sections aren't, and the skill treats them that way. Every hero has to meet four demands: the base card's signature move lives IN the hero and is doing real work, the base card's craft language (letterpress offset, screentones, dimension lines, drop caps, ransom-note tape, whatever the card calls for) is visible without zooming, motion matches the card's spec, and treated media is in the hero (not later) if the card is photo/illustration-led. Under-designed heros next to over-designed accent zones are the failure mode this rule catches.
+
 ## The deck
 
-16 directions, none of which is "clean modern SaaS" (that card is deliberately absent):
+32 directions, none of which is "clean modern SaaS" (that card is deliberately absent):
 
-`swiss-international` · `neo-brutalist` · `raw-brutalist` · `editorial-magazine` · `terminal-mono` · `tactile-hardware` · `technical-blueprint` · `memphis-postmodern` · `humanist-warm` · `gallery-monochrome` · `retro-computing` · `risograph-print` · `sci-fi-hud` · `maximalist-expressive` · `utilitarian-dense` · `earthy-naturalist`
+`swiss-international` · `neo-brutalist` · `raw-brutalist` · `editorial-magazine` · `terminal-mono` · `tactile-hardware` · `technical-blueprint` · `memphis-postmodern` · `humanist-warm` · `gallery-monochrome` · `retro-computing` · `risograph-print` · `sci-fi-hud` · `maximalist-expressive` · `utilitarian-dense` · `earthy-naturalist` · `bauhaus-constructivist` · `art-deco` · `frutiger-aero` · `mid-century-modernist` · `cranbrook-deconstructed` · `ukiyo-e-woodblock` · `zine-cutup` · `wabi-japanese-modernist` · `comic-pop` · `vaporwave-synthwave` · `manga-anime` · `broadsheet-newspaper` · `botanical-plate` · `crypto-defi` · `art-nouveau` · `pixel-8bit`
 
 Each card specifies references, feel, type (with a free Google Fonts fallback), color, layout grammar, motion, a signature move, an imagery treatment, and a voice.
 
@@ -39,22 +49,27 @@ HARD hits (supercharge, seamlessly, "the future of", em dashes, and the rest) ex
 ## Files
 
 ```
-SKILL.md              the workflow: roll → commit → load type/imagery/voice → ban-list → spec → build → verify
-references/deck.md     the 16 directions, fully specified
-references/assets.md   loading fonts so they don't degrade; placeholder images (keyless + Unsplash key); treatment recipes
-references/copy.md     anti-AI copy protections: the tell list, per-surface fixes, same-message-different-voice
-bin/check-copy.sh     a linter that flags AI copy tells (hype, em dashes) with file:line; HARD hits exit 1
-examples/             two pages built by running the skill (see below)
+SKILL.md                the workflow: roll → recommend → commit → load type/imagery/voice → ban-list → spec → hero discipline → verify
+references/deck.md      the 32 directions, fully specified
+references/modifiers.md the modifier layer: mode × scale × accent axes (9,504 briefs total)
+references/assets.md    loading fonts so they don't degrade; placeholder images; treatment recipes; orphan control
+references/copy.md      anti-AI copy protections: the tell list, per-surface fixes, same-message-different-voice
+bin/roll.sh             the roller: fresh brief, `--n 5` batch, `--card <name>` pinned, or replay `27.2.1.28`
+bin/check-copy.sh       a linter that flags AI copy tells (hype, em dashes) with file:line; HARD hits exit 1
+examples/               pages built by running the skill (see below)
+assets/promo.{html,png} the repo's own promo image, designed by the skill on itself (brief 29.1.3.23)
 ```
 
 ## Examples
 
 Built by actually running the skill, not hand-picked:
 
-- **`examples/gauge-blueprint.html`**, a fit-selected SLO-monitoring SaaS landing in `technical-blueprint`. Dimension lines annotate the UI as a spec sheet.
-- **`examples/marl-risograph.html`**, a random seed (roll landed on `risograph-print`) applied to an indie fashion label. Overprinted spot inks, paper grain, duotone-treated placeholder photos. Proof the deck holds up even on an "off" pick.
+- **`examples/gauge-blueprint.html`** — a fit-selected SLO-monitoring SaaS landing in `technical-blueprint`. Dimension lines annotate the UI as a spec sheet.
+- **`examples/marl-risograph.html`** — a random seed (`risograph-print`) applied to an indie fashion label. Overprinted spot inks, paper grain, duotone-treated placeholder photos. Proof the deck holds up even on an "off" pick.
+- **`examples/frequency-editorial-dark.html`** — same product (a podcaster→sponsor SaaS) at brief `4.2.1.1`: `editorial-magazine` · dark · display-first · +swiss-international. Drop-cap serif hero, dark ink surface, strict Swiss-grid fit report card.
+- **`examples/frequency-midcentury-riso.html`** — same product at brief `20.1.3.12`: `mid-century-modernist` · default · body-first · +risograph-print. Cut-paper show avatars, warm cream surface, fully riso-treated fit report (overprint, halftone, paper grain).
 
-Open either file in a browser. `marl-risograph.html` loads placeholder photos from an external host, so it needs a network connection.
+Open the two Frequency files side-by-side for a direct comparison: same product, opposite art direction, both produced by rolling.
 
 ## Install
 
