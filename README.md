@@ -2,13 +2,13 @@
 
 A Claude Code skill that stops AI-generated UI from all looking the same.
 
-![art-direction promo — a botanical-plate specimen of the skill itself, ransom-note accent, rolled from brief 29.1.3.23](assets/promo.png)
+![art-direction promo — a Fraunces serif hero on dark ink, editorial-magazine direction](assets/promo.png)
 
 Every quality adjective (clean, modern, sleek, minimal, professional) resolves to the same point: the mean of the training data. That mean is the AI look: Inter/Geist, a purple-to-blue gradient, glassmorphism, `rounded-2xl` + `shadow-2xl` cards, a centered hero over three feature cards, emoji as icons. You cannot describe your way out of it with more quality words, because they all aim at the same center.
 
 This skill aims somewhere else, on purpose.
 
-The image above was designed by the skill on itself — random-rolled to `botanical-plate` (base 29), body-first, with a `zine-cutup` accent. No fit-selection, no reroll. That's the anti-sameness thesis working end-to-end.
+The image above was designed by the skill on itself. The original random roll landed on `botanical-plate` — which needs real illustration craft that inline SVG can't produce cleanly. That surfaced a gap in the skill, now baked in as a hard rule (see [assets.md §3](references/assets.md) — don't hand-draw complex organic illustration; use public-domain illustration, a treated photograph, type-as-specimen, or a documented fit-override). Fit-override applied: `editorial-magazine · dark · display-first`. The dogfood held up; the rule tightened.
 
 ## How it works
 
