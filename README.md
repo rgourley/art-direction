@@ -4,6 +4,10 @@ A Claude Code skill that stops AI-generated UI from all looking the same.
 
 ![art-direction promo — a Fraunces serif hero on dark ink, editorial-magazine direction](assets/promo.png)
 
+| ![Bauhaus-constructivist](assets/promo-bauhaus.png) | ![Vaporwave-synthwave](assets/promo-vaporwave.png) |
+|:---:|:---:|
+| `bauhaus-constructivist` | `vaporwave-synthwave` |
+
 Every quality adjective (clean, modern, sleek, minimal, professional) resolves to the same point: the mean of the training data. That mean is the AI look: Inter/Geist, a purple-to-blue gradient, glassmorphism, `rounded-2xl` + `shadow-2xl` cards, a centered hero over three feature cards, emoji as icons. You cannot describe your way out of it with more quality words, because they all aim at the same center.
 
 This skill aims somewhere else, on purpose.

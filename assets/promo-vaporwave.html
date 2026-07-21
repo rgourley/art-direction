@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>art-direction · vaporwave-synthwave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Audiowide&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0F0424;
+  --purple: #2A0F5F;
+  --pink: #FF3D9A;
+  --cyan: #00E1FF;
+  --sun-hot: #FF6B35;
+  --sun-cool: #FFB6E1;
+  --chrome-1: #FFF6FA;
+  --chrome-2: #B8CFE3;
+  --chrome-3: #6485B0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body {
+  background: var(--deep);
+  color: var(--chrome-1);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  position: relative;
+}
+
+.plate { position: relative; width: 1200px; height: 630px; overflow: hidden; }
+
+/* Sky gradient — deep purple to twilight */
+.sky {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 900px 500px at 50% 50%, rgba(255, 61, 154, 0.18) 0%, transparent 60%),
+    linear-gradient(180deg, #0F0424 0%, #2A0F5F 45%, #6C1B7F 60%, #2A0F5F 62%, #0F0424 100%);
+  z-index: 1;
+}
+
+/* Sun disc with retro gradient stripes */
+.sun {
+  position: absolute;
+  left: 50%; top: 62%;
+  transform: translate(-50%, -50%);
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  background:
+    linear-gradient(180deg,
+      #FFF6FA 0%,
+      #FFB6E1 22%,
+      #FF6B35 55%,
+      #FF3D9A 78%,
+      #2A0F5F 100%);
+  z-index: 2;
+  box-shadow: 0 0 80px rgba(255, 61, 154, 0.6), 0 0 160px rgba(255, 61, 154, 0.3);
+}
+/* Sun scanline cuts */
+.sun-cuts {
+  position: absolute;
+  left: 50%; top: 62%;
+  transform: translate(-50%, -50%);
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  z-index: 3;
+  pointer-events: none;
+  background: repeating-linear-gradient(180deg,
+    transparent 0px, transparent 12px,
+    #0F0424 12px, #0F0424 18px);
+  mask: linear-gradient(180deg, transparent 44%, black 46%, black 100%);
+  -webkit-mask: linear-gradient(180deg, transparent 44%, black 46%, black 100%);
+  opacity: 0.85;
+}
+
+/* Perspective grid — floor from horizon down */
+.grid {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 55%;
+  z-index: 3;
+  overflow: hidden;
+  perspective: 700px;
+  perspective-origin: 50% 0%;
+}
+.grid-plane {
+  position: absolute;
+  bottom: -20px; left: -50%;
+  width: 200%; height: 800px;
+  transform: rotateX(70deg);
+  transform-origin: 50% 0%;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(255, 61, 154, 0.15) 100%),
+    repeating-linear-gradient(90deg, transparent 0px, transparent 60px, rgba(255, 61, 154, 0.8) 60px, rgba(255, 61, 154, 0.8) 61px),
+    repeating-linear-gradient(0deg,   transparent 0px, transparent 60px, rgba(0, 225, 255, 0.6) 60px, rgba(0, 225, 255, 0.6) 61px);
+}
+
+/* Horizon glow bar */
+.horizon {
+  position: absolute;
+  left: 0; right: 0;
+  top: 62%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--pink) 50%, transparent 100%);
+  box-shadow: 0 0 24px var(--pink), 0 0 60px rgba(255, 61, 154, 0.5);
+  z-index: 4;
+}
+
+/* Chrome outlined headline */
+.title-wrap {
+  position: absolute;
+  top: 82px; left: 0; right: 0;
+  z-index: 10;
+  text-align: center;
+}
+
+.title-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--cyan);
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  text-shadow: 0 0 12px rgba(0, 225, 255, 0.65);
+}
+
+.title {
+  font-family: 'Monoton', 'Audiowide', sans-serif;
+  font-size: 108px;
+  font-weight: 400;
+  line-height: 0.94;
+  letter-spacing: 0.02em;
+  background: linear-gradient(180deg, #FFFFFF 0%, #B8CFE3 40%, #6485B0 55%, #2C3E6B 70%, #FFB6E1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+  text-shadow:
+    0 3px 0 rgba(255, 61, 154, 0.9),
+    0 6px 30px rgba(255, 61, 154, 0.55),
+    0 0 60px rgba(0, 225, 255, 0.35);
+  display: inline-block;
+}
+
+.subtitle {
+  margin-top: 18px;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  color: var(--pink);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(255, 61, 154, 0.6);
+}
+.subtitle .cy { color: var(--cyan); }
+
+/* Bottom UI strip */
+.bottom {
+  position: absolute;
+  bottom: 30px; left: 32px; right: 32px;
+  z-index: 12;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 40px;
+  padding: 14px 22px;
+  background: rgba(15, 4, 36, 0.6);
+  border: 1px solid rgba(0, 225, 255, 0.35);
+  box-shadow: inset 0 0 20px rgba(0, 225, 255, 0.08), 0 0 20px rgba(0, 225, 255, 0.12);
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--chrome-1);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.bottom .stats { display: flex; gap: 32px; }
+.bottom .stats span strong {
+  font-family: 'Monoton', sans-serif;
+  color: var(--pink);
+  font-size: 18px;
+  margin-right: 8px;
+  text-shadow: 0 0 8px rgba(255, 61, 154, 0.7);
+  font-weight: 400;
+}
+.bottom .repo { color: var(--cyan); text-shadow: 0 0 8px rgba(0, 225, 255, 0.5); }
+.bottom .repo strong { color: var(--chrome-1); font-weight: 700; letter-spacing: 0.1em; }
+
+/* Palm silhouettes at edges */
+.palm-l, .palm-r {
+  position: absolute;
+  bottom: 220px;
+  width: 90px; height: 200px;
+  z-index: 5;
+  filter: drop-shadow(0 0 12px rgba(0,0,0,0.7));
+}
+.palm-l { left: 8px; }
+.palm-r { right: 8px; transform: scaleX(-1); }
+</style>
+</head>
+<body>
+<div class="plate">
+  <div class="sky"></div>
+
+  <!-- Sun with retro slice cuts -->
+  <div class="sun"></div>
+  <div class="sun-cuts"></div>
+
+  <!-- Horizon glow -->
+  <div class="horizon"></div>
+
+  <!-- Perspective floor grid -->
+  <div class="grid"><div class="grid-plane"></div></div>
+
+  <!-- Palm silhouettes -->
+  <svg class="palm-l" viewBox="0 0 90 200" xmlns="http://www.w3.org/2000/svg">
+    <path d="M45 200 L42 90 L48 90 L45 200Z" fill="#0F0424"/>
+    <g fill="#0F0424">
+      <path d="M45 92 Q10 80 0 55 Q22 68 45 92 Z"/>
+      <path d="M45 92 Q80 78 90 50 Q68 66 45 92 Z"/>
+      <path d="M45 92 Q10 100 -6 130 Q22 110 45 92 Z"/>
+      <path d="M45 92 Q78 105 96 138 Q70 112 45 92 Z"/>
+      <path d="M45 92 Q30 60 34 20 Q38 58 45 92 Z"/>
+    </g>
+  </svg>
+  <svg class="palm-r" viewBox="0 0 90 200" xmlns="http://www.w3.org/2000/svg">
+    <path d="M45 200 L42 90 L48 90 L45 200Z" fill="#0F0424"/>
+    <g fill="#0F0424">
+      <path d="M45 92 Q10 80 0 55 Q22 68 45 92 Z"/>
+      <path d="M45 92 Q80 78 90 50 Q68 66 45 92 Z"/>
+      <path d="M45 92 Q10 100 -6 130 Q22 110 45 92 Z"/>
+      <path d="M45 92 Q78 105 96 138 Q70 112 45 92 Z"/>
+      <path d="M45 92 Q30 60 34 20 Q38 58 45 92 Z"/>
+    </g>
+  </svg>
+
+  <!-- Title stack -->
+  <div class="title-wrap">
+    <div class="title-eyebrow">A Claude Code Skill · No. 001</div>
+    <h1 class="title">ART DIRECTION</h1>
+    <div class="subtitle">TONIGHT WE STOP <span class="cy">LOOKING THE SAME.</span></div>
+  </div>
+
+  <!-- Bottom UI strip -->
+  <div class="bottom">
+    <div class="stats">
+      <span><strong>32</strong> Directions</span>
+      <span><strong>9,504</strong> Briefs</span>
+      <span><strong>0</strong> Purple Gradients</span>
+    </div>
+    <div class="repo">github · <strong>rgourley/art-direction</strong></div>
+  </div>
+</div>
+</body>
+</html>

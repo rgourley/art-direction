@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>art-direction · bauhaus-constructivist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Work+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F1EBDC;
+  --ink: #0D0D0D;
+  --red: #D0021B;
+  --yellow: #F0B90A;
+  --white: #FFFFFF;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Work Sans', -apple-system, system-ui, sans-serif;
+  font-weight: 500;
+  position: relative;
+}
+body::after {
+  content: '';
+  position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  z-index: 100;
+}
+.plate { position: relative; width: 1200px; height: 630px; overflow: hidden; }
+
+/* Big red disk, off-corner but not dominant */
+.disk {
+  position: absolute;
+  right: -160px; top: -160px;
+  width: 640px; height: 640px;
+  border-radius: 50%;
+  background: var(--red);
+  z-index: 2;
+}
+.disk::after {
+  content: '';
+  position: absolute;
+  inset: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 235, 200, 0.15);
+}
+
+/* Short thin diagonal accent bar — decoration, no text inside */
+.accent-bar {
+  position: absolute;
+  top: 500px; left: 60px;
+  width: 480px; height: 8px;
+  background: var(--ink);
+  transform: rotate(-6deg);
+  transform-origin: left center;
+  z-index: 4;
+}
+.accent-bar-yellow {
+  position: absolute;
+  top: 518px; left: 60px;
+  width: 320px; height: 4px;
+  background: var(--yellow);
+  transform: rotate(-6deg);
+  transform-origin: left center;
+  z-index: 4;
+}
+
+/* Manifesto label */
+.tag {
+  position: absolute; top: 76px; left: 78px;
+  z-index: 8;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.32em;
+  color: var(--ink); font-weight: 500;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+/* Title */
+.title {
+  position: absolute;
+  top: 120px; left: 78px;
+  z-index: 6;
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--ink);
+  line-height: 0.82;
+}
+.title .l1 {
+  display: block; font-size: 176px;
+  text-shadow: 5px 6px 0 rgba(208,2,27,0.85);
+}
+.title .l2 { display: block; font-size: 176px; color: var(--red); }
+
+/* Claim over the disk */
+.claim {
+  position: absolute;
+  top: 88px; right: 68px;
+  z-index: 7;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px;
+  color: var(--white);
+  line-height: 0.96;
+  letter-spacing: 0.01em;
+  text-align: right;
+  max-width: 340px;
+}
+.claim .y { color: var(--yellow); }
+
+/* Bottom band: stats left, colophon right */
+.bottom {
+  position: absolute;
+  bottom: 56px; left: 78px; right: 78px;
+  z-index: 8;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 40px;
+  padding-top: 20px;
+  border-top: 2px solid var(--ink);
+}
+
+.stats { display: flex; gap: 44px; align-items: baseline; }
+.stats .s { display: flex; align-items: baseline; gap: 10px; }
+.stats .n {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  line-height: 0.85;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.stats .n.red { color: var(--red); }
+.stats .l {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.22em;
+  color: var(--ink); font-weight: 500;
+}
+
+.repo {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em;
+  color: var(--ink); text-align: right; font-weight: 500;
+  line-height: 1.6;
+}
+.repo strong {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; text-transform: none; letter-spacing: 0.02em;
+  margin-bottom: 4px; font-weight: 400;
+}
+
+.frame { position: absolute; top: 24px; left: 24px; right: 24px; bottom: 24px; border: 1px solid var(--ink); pointer-events: none; z-index: 8; opacity: 0.9; }
+.mark { position: absolute; width: 14px; height: 14px; background: var(--red); z-index: 9; }
+.mark-tl { top: 16px; left: 16px; }
+.mark-tr { top: 16px; right: 16px; }
+.mark-bl { bottom: 16px; left: 16px; }
+.mark-br { bottom: 16px; right: 16px; }
+</style>
+</head>
+<body>
+<div class="plate">
+  <span class="mark mark-tl"></span>
+  <span class="mark mark-tr"></span>
+  <span class="mark mark-bl"></span>
+  <span class="mark mark-br"></span>
+
+  <div class="disk"></div>
+  <div class="accent-bar"></div>
+  <div class="accent-bar-yellow"></div>
+
+  <div class="tag">A Claude Code skill · No. 001</div>
+
+  <div class="title">
+    <span class="l1">ART</span>
+    <span class="l2">DIRECTION.</span>
+  </div>
+
+  <div class="claim">
+    Stop AI-generated UI<br>from all looking<br><span class="y">the same.</span>
+  </div>
+
+  <div class="bottom">
+    <div class="stats">
+      <div class="s"><span class="n">32</span><span class="l">Directions</span></div>
+      <div class="s"><span class="n red">9,504</span><span class="l">Concrete briefs</span></div>
+      <div class="s"><span class="n">0</span><span class="l">Purple gradients</span></div>
+    </div>
+    <div class="repo">
+      <strong>rgourley/art-direction</strong>
+      github · A Claude Code skill
+    </div>
+  </div>
+
+  <div class="frame"></div>
+</div>
+</body>
+</html>
